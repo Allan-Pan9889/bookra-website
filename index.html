@@ -227,7 +227,7 @@
                 <!-- Right: Phone Screenshot -->
                 <div class="flex justify-center animate-in" style="animation-delay: 0.2s;">
                     <div class="phone-frame">
-                        <img src="images/IMG_4839.PNG" alt="Bookra App Library">
+                        <img data-img="hero" src="images/IMG_4839.PNG" alt="Bookra App Library">
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
                 <!-- Left: Phone Screenshot -->
                 <div class="flex justify-center md:justify-end order-2 md:order-1">
                     <div class="phone-frame">
-                        <img src="images/IMG_4901.PNG" alt="Batch Scanning">
+                        <img data-img="scan" src="images/IMG_4901.PNG" alt="Batch Scanning">
                     </div>
                 </div>
 
@@ -331,7 +331,7 @@
                 <!-- Right: Phone Screenshot -->
                 <div class="flex justify-center md:justify-start">
                     <div class="phone-frame">
-                        <img src="images/IMG_4855.PNG" alt="AI X-Ray Analysis">
+                        <img data-img="xray" src="images/IMG_4855.PNG" alt="AI X-Ray Analysis">
                     </div>
                 </div>
             </div>
@@ -345,7 +345,7 @@
                 <!-- Left: Phone Screenshot -->
                 <div class="flex justify-center md:justify-end order-2 md:order-1">
                     <div class="phone-frame">
-                        <img src="images/IMG_4844.PNG" alt="Mood Match">
+                        <img data-img="mood" src="images/IMG_4844.PNG" alt="Mood Match">
                     </div>
                 </div>
 
@@ -439,7 +439,7 @@
                 <!-- Right: Phone Screenshot -->
                 <div class="flex justify-center md:justify-start">
                     <div class="phone-frame">
-                        <img src="images/IMG_4846.PNG" alt="Reading Path">
+                        <img data-img="path" src="images/IMG_4846.PNG" alt="Reading Path">
                     </div>
                 </div>
             </div>
@@ -453,7 +453,7 @@
                 <!-- Left: Phone Screenshot -->
                 <div class="flex justify-center md:justify-end order-2 md:order-1">
                     <div class="phone-frame">
-                        <img src="images/IMG_4841.PNG" alt="Quote Cards">
+                        <img data-img="quote" src="images/IMG_4841.PNG" alt="Quote Cards">
                     </div>
                 </div>
 
@@ -704,17 +704,47 @@
 
         let currentLang = 'zh';
 
+        // Screenshot mappings for different languages
+        const screenshots = {
+            zh: {
+                hero: 'images/IMG_4839.PNG',
+                scan: 'images/IMG_4901.PNG',
+                xray: 'images/IMG_4855.PNG',
+                mood: 'images/IMG_4844.PNG',
+                path: 'images/IMG_4846.PNG',
+                quote: 'images/IMG_4841.PNG'
+            },
+            en: {
+                hero: 'images/IMG_7262.PNG',
+                scan: 'images/IMG_7252.PNG',
+                xray: 'images/IMG_7266.PNG',
+                mood: 'images/IMG_7123.PNG',
+                path: 'images/IMG_7125.PNG',
+                quote: 'images/IMG_7268.PNG'
+            }
+        };
+
         function switchLanguage(lang) {
             currentLang = lang;
 
             document.getElementById('lang-zh').classList.toggle('lang-active', lang === 'zh');
             document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
 
+            // Switch text content
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (key && translations[lang][key]) {
                     element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Switch screenshots
+            const images = document.querySelectorAll('[data-img]');
+            images.forEach(img => {
+                const imgKey = img.getAttribute('data-img');
+                if (imgKey && screenshots[lang][imgKey]) {
+                    img.src = screenshots[lang][imgKey];
                 }
             });
 
