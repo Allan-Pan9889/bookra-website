@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支持 - Bookra</title>
+    <meta name="description" content="获取 Bookra 的帮助。查找常见问题的答案并联系我们的支持团队。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FAF7F3',
+                            100: '#F4E8D8',
+                            200: '#E9DCC9',
+                            300: '#DEC9B0',
+                            400: '#D4B697',
+                        },
+                        accent: '#E07830',
+                        'accent-dark': '#C56524',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FAF7F3 0%, #F4E8D8 50%, #E9DCC9 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="glass-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-2">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="images/Bookra.png" alt="Bookra" class="h-14 w-auto">
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">首页</a>
+                    <a href="index.html#features" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">功能</a>
+                    <a href="support-zh.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">支持</a>
+                    <a href="privacy-zh.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">隐私</a>
+                    <a href="index.html#download" class="px-5 py-2.5 rounded-xl font-semibold text-white text-sm" style="background: linear-gradient(135deg, #E07830 0%, #D46820 100%);">下载应用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6">我们能帮您什么？</h1>
+            <p class="text-xl text-gray-700 mb-8">查找常见问题的答案或联系我们的支持团队</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">常见问题</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">如何扫描书籍到我的书库？</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        点击书库中的"+"按钮，然后选择"扫描书籍"。将相机对准书脊，Bookra 会自动识别它们。为获得最佳效果，请确保光线充足并保持手机稳定。您可以一次扫描多本书！
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">什么是 AI X-Ray 分析？</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        AI X-Ray 是我们的特色功能，从三个维度分析书籍：
+                        <br><br>
+                        <strong>骨架：</strong>书籍的结构、核心概念和框架
+                        <br>
+                        <strong>解剖：</strong>深层主题、论点和相互关联的想法
+                        <br>
+                        <strong>灵魂：</strong>情感核心、作者意图和哲学本质
+                        <br><br>
+                        这帮助您在多个层面理解书籍，发现您可能错过的联系。
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">书籍扫描的准确度如何？</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        我们的扫描技术使用先进的 OCR 和 AI 来识别书脊，准确度很高。如果书籍未被自动识别，您可以：
+                        <br>• 扫描 ISBN 条形码进行即时查找
+                        <br>• 手动搜索书名
+                        <br>• 拍照并让 AI 分析封面
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">免费版和 Pro 版有什么区别？</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>免费版：</strong>
+                        <br>• 最多 30 本书
+                        <br>• 每月 5 次 AI 灵感（心情匹配、学习路径等）
+                        <br>• 基础书籍扫描
+                        <br>• 金句卡片生成
+                        <br><br>
+                        <strong>Pro 版：</strong>
+                        <br>• 无限书籍
+                        <br>• 无限 AI 灵感
+                        <br>• 优先 AI 分析
+                        <br>• 高级学习路径
+                        <br>• 无广告体验
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">我的数据安全吗？</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        是的，您的隐私和数据安全是我们的首要任务。我们使用行业标准加密，您的阅读数据存储在您的设备上。我们仅在您明确请求 AI 功能时使用云端处理。
+                        阅读我们的完整<a href="privacy-zh.html" class="text-accent hover:underline">隐私政策</a>了解详情。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 bg-white/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">需要更多帮助？</h2>
+            <p class="text-xl text-gray-700 mb-8">我们的支持团队随时为您服务</p>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <a href="mailto:support@bookra.im" class="flex items-center justify-center space-x-3 p-6 bg-white rounded-xl hover:bg-beige-100 transition-colors cursor-pointer">
+                    <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="font-semibold">发送邮件</span>
+                </a>
+
+                <a href="https://twitter.com/bookra_app" target="_blank" class="flex items-center justify-center space-x-3 p-6 bg-white rounded-xl hover:bg-beige-100 transition-colors cursor-pointer">
+                    <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span class="font-semibold">Twitter</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-white/30 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="images/Bookra.png" alt="Bookra" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-gray-800">Bookra</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">AI 驱动的阅读伴侣</p>
+                </div>
+
+                <!-- Product -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">产品</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#features" class="text-gray-600 hover:text-accent transition-colors">功能特性</a></li>
+                        <li><a href="index.html#download" class="text-gray-600 hover:text-accent transition-colors">下载应用</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">支持</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="support-zh.html" class="text-gray-600 hover:text-accent transition-colors">帮助中心</a></li>
+                        <li><a href="#contact" class="text-gray-600 hover:text-accent transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">法律</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="privacy-zh.html" class="text-gray-600 hover:text-accent transition-colors">隐私政策</a></li>
+                        <li><a href="privacy-zh.html#terms" class="text-gray-600 hover:text-accent transition-colors">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-600 text-sm">© 2025 Bookra. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

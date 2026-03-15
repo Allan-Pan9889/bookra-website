@@ -768,6 +768,26 @@
                 }
             });
 
+            // Update support and privacy links based on language
+            const supportLinks = document.querySelectorAll('a[href*="support"]');
+            const privacyLinks = document.querySelectorAll('a[href*="privacy"]');
+
+            supportLinks.forEach(link => {
+                if (lang === 'zh') {
+                    link.href = link.href.includes('#') ? 'support-zh.html' + link.href.split('#')[1] : 'support-zh.html';
+                } else {
+                    link.href = link.href.includes('#') ? 'support.html' + link.href.split('#')[1] : 'support.html';
+                }
+            });
+
+            privacyLinks.forEach(link => {
+                if (lang === 'zh') {
+                    link.href = link.href.includes('#') ? 'privacy-zh.html' + link.href.split('#')[1] : 'privacy-zh.html';
+                } else {
+                    link.href = link.href.includes('#') ? 'privacy.html' + link.href.split('#')[1] : 'privacy.html';
+                }
+            });
+
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
             localStorage.setItem('bookra-lang', lang);
         }
