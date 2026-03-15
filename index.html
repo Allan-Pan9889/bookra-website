@@ -50,6 +50,32 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(224, 120, 48, 0.15);
         }
+        .screenshot-frame {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 9/19.5;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            background: #000;
+        }
+        .screenshot-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .float-animation {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body class="gradient-bg">
@@ -65,52 +91,116 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#features" class="text-gray-700 hover:text-accent transition-colors">Features</a>
-                    <a href="#how-it-works" class="text-gray-700 hover:text-accent transition-colors">How It Works</a>
+                    <a href="#screenshots" class="text-gray-700 hover:text-accent transition-colors">Screenshots</a>
                     <a href="support.html" class="text-gray-700 hover:text-accent transition-colors">Support</a>
                     <a href="privacy.html" class="text-gray-700 hover:text-accent transition-colors">Privacy</a>
-                    <button id="lang-toggle" class="text-sm px-3 py-1 rounded-full border border-gray-300 hover:border-accent transition-colors">中文</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Real Screenshot -->
     <section class="pt-32 pb-20 px-6">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                        Your Books,<br>
+                        <span class="text-accent">Elevated by AI</span>
+                    </h1>
+                    <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+                        Transform your reading experience with AI-powered insights, personalized recommendations, and beautiful quote cards that bring your favorite passages to life.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <a href="#" class="inline-flex items-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-full transition-colors shadow-lg hover:shadow-xl cursor-pointer">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                            </svg>
+                            Download on App Store
+                        </a>
+                        <a href="#screenshots" class="inline-flex items-center px-8 py-4 bg-white hover:bg-beige-100 text-gray-800 font-semibold rounded-full transition-colors shadow-md cursor-pointer">
+                            See Screenshots
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Screenshot -->
+                <div class="flex justify-center">
+                    <div class="screenshot-frame float-animation">
+                        <img src="images/IMG_4839.PNG" alt="Bookra App - Beautiful Book Library" loading="eager">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Gallery Section -->
+    <section id="screenshots" class="py-20 px-6 bg-white/50">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                    Your Books,<br>
-                    <span class="text-accent">Elevated by AI</span>
-                </h1>
-                <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Transform your reading experience with AI-powered insights, personalized recommendations, and beautiful quote cards that bring your favorite passages to life.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#" class="inline-flex items-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-full transition-colors shadow-lg hover:shadow-xl cursor-pointer">
-                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-                        </svg>
-                        Download on App Store
-                    </a>
-                    <a href="#how-it-works" class="inline-flex items-center px-8 py-4 bg-white hover:bg-beige-100 text-gray-800 font-semibold rounded-full transition-colors shadow-md cursor-pointer">
-                        Learn More
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </a>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">See Bookra in Action</h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Experience the power of AI-driven reading</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Screenshot 1: Batch Scanning -->
+                <div class="space-y-6">
+                    <div class="screenshot-frame mx-auto">
+                        <img src="images/IMG_4901.PNG" alt="Batch Book Scanning" loading="lazy">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Lightning Fast Scanning</h3>
+                        <p class="text-gray-700">Capture entire bookshelves in seconds with AI spine recognition</p>
+                    </div>
+                </div>
+
+                <!-- Screenshot 2: AI X-Ray -->
+                <div class="space-y-6">
+                    <div class="screenshot-frame mx-auto">
+                        <img src="images/IMG_4855.PNG" alt="AI X-Ray Analysis" loading="lazy">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">AI X-Ray Analysis</h3>
+                        <p class="text-gray-700">Deep insights through Skeleton, Dissection, and Soul dimensions</p>
+                    </div>
+                </div>
+
+                <!-- Screenshot 3: Mood Recommendations -->
+                <div class="space-y-6">
+                    <div class="screenshot-frame mx-auto">
+                        <img src="images/IMG_4844.PNG" alt="Mood-Based Recommendations" loading="lazy">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Mood-Based Matching</h3>
+                        <p class="text-gray-700">Find the perfect book for your current emotional state</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Hero Image Placeholder -->
-            <div class="relative">
-                <div class="glass-card rounded-3xl p-8 max-w-4xl mx-auto">
-                    <div class="aspect-video bg-gradient-to-br from-beige-100 to-beige-200 rounded-2xl flex items-center justify-center">
-                        <div class="text-center">
-                            <svg class="w-24 h-24 mx-auto text-accent mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
-                            <p class="text-gray-600 font-medium">App Screenshot Preview</p>
-                        </div>
+            <!-- Second Row -->
+            <div class="grid md:grid-cols-2 gap-12 mt-12 max-w-4xl mx-auto">
+                <!-- Screenshot 4: Reading Paths -->
+                <div class="space-y-6">
+                    <div class="screenshot-frame mx-auto">
+                        <img src="images/IMG_4846.PNG" alt="Themed Reading Paths" loading="lazy">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Themed Reading Paths</h3>
+                        <p class="text-gray-700">Follow curated journeys through interconnected topics</p>
+                    </div>
+                </div>
+
+                <!-- Screenshot 5: Quote Cards -->
+                <div class="space-y-6">
+                    <div class="screenshot-frame mx-auto">
+                        <img src="images/IMG_4841.PNG" alt="Beautiful Quote Cards" loading="lazy">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Beautiful Quote Cards</h3>
+                        <p class="text-gray-700">Transform highlights into shareable artwork</p>
                     </div>
                 </div>
             </div>
@@ -126,7 +216,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
                 <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,7 +226,6 @@
                     <p class="text-gray-700 leading-relaxed">Capture entire bookshelves in seconds with batch spine recognition. Build your digital library effortlessly.</p>
                 </div>
 
-                <!-- Feature 2 -->
                 <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +236,6 @@
                     <p class="text-gray-700 leading-relaxed">Explore books through three dimensions: Skeleton, Dissection, and Soul. Understand deeper meanings instantly.</p>
                 </div>
 
-                <!-- Feature 3 -->
                 <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,7 +246,6 @@
                     <p class="text-gray-700 leading-relaxed">Find the perfect book for how you're feeling right now. AI understands your emotional needs.</p>
                 </div>
 
-                <!-- Feature 4 -->
                 <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,7 +256,6 @@
                     <p class="text-gray-700 leading-relaxed">Follow curated journeys through interconnected topics. Discover unexpected connections between books.</p>
                 </div>
 
-                <!-- Feature 5 -->
                 <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,7 +266,6 @@
                     <p class="text-gray-700 leading-relaxed">Transform highlights into shareable artwork with elegant warm beige aesthetics. Share your favorite passages.</p>
                 </div>
 
-                <!-- Feature 6 -->
                 <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -190,45 +274,6 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Cross-Book Insights</h3>
                     <p class="text-gray-700 leading-relaxed">Discover unexpected connections between books in your library. See how ideas relate across different works.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">How It Works</h2>
-                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Start your intelligent reading journey in three simple steps</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Step 1 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-3xl font-bold text-white">1</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Scan Your Books</h3>
-                    <p class="text-gray-700 leading-relaxed">Use your camera to scan book spines or ISBN codes. Build your digital library in seconds.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-3xl font-bold text-white">2</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Get AI Insights</h3>
-                    <p class="text-gray-700 leading-relaxed">Tap any book to generate instant AI analysis, recommendations, and connections with other books.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-3xl font-bold text-white">3</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Deepen Your Reading</h3>
-                    <p class="text-gray-700 leading-relaxed">Explore themed paths, save beautiful quotes, and discover books that match your current mood.</p>
                 </div>
             </div>
         </div>
@@ -267,7 +312,7 @@
                     <h4 class="font-semibold text-gray-900 mb-4">Product</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#features" class="text-gray-600 hover:text-accent transition-colors">Features</a></li>
-                        <li><a href="#how-it-works" class="text-gray-600 hover:text-accent transition-colors">How It Works</a></li>
+                        <li><a href="#screenshots" class="text-gray-600 hover:text-accent transition-colors">Screenshots</a></li>
                     </ul>
                 </div>
                 <div>
@@ -304,11 +349,6 @@
                     });
                 }
             });
-        });
-
-        // Language toggle (placeholder)
-        document.getElementById('lang-toggle').addEventListener('click', function() {
-            alert('Language switching will be implemented with separate Chinese pages');
         });
     </script>
 </body>
