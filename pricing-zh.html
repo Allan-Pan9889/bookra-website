@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价格 - Bookra</title>
+    <meta name="description" content="选择适合您的阅读计划。免费开始，准备好后升级到无限 AI 洞察。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FAF7F3',
+                            100: '#F4E8D8',
+                            200: '#E9DCC9',
+                            300: '#DEC9B0',
+                            400: '#D4B697',
+                        },
+                        accent: '#E07830',
+                        'accent-dark': '#C56524',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FAF7F3 0%, #F4E8D8 50%, #E9DCC9 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .feature-check {
+            color: #10B981;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="glass-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-2">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="images/Bookra.png" alt="Bookra" class="h-14 w-auto">
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">首页</a>
+                    <a href="index.html#features" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">功能</a>
+                    <a href="pricing-zh.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">价格</a>
+                    <a href="support-zh.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">支持</a>
+                    <a href="privacy-zh.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">隐私</a>
+                    <a href="index.html#download" class="px-5 py-2.5 rounded-xl font-semibold text-white text-sm" style="background: linear-gradient(135deg, #E07830 0%, #D46820 100%);">下载应用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-orange-50 text-orange-700 px-4 py-2 rounded-full mb-6">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-sm font-semibold">简单透明的定价</span>
+            </div>
+            <h1 class="text-5xl font-bold text-gray-900 mb-6">选择适合您的阅读计划</h1>
+            <p class="text-xl text-gray-700 mb-8">免费开始，准备好后升级到无限 AI 洞察</p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Free Plan -->
+                <div class="pricing-card glass-card rounded-3xl p-8">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">免费版</h3>
+                        <p class="text-gray-600">适合休闲阅读者</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <div class="flex items-baseline">
+                            <span class="text-5xl font-bold text-gray-900">¥0</span>
+                            <span class="text-gray-600 ml-2">/永久</span>
+                        </div>
+                    </div>
+
+                    <a href="https://apps.apple.com/app/bookra" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-6 rounded-xl font-semibold text-center bg-gray-200 text-gray-900 hover:bg-gray-300 transition-colors mb-8">
+                        开始使用
+                    </a>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>最多 30 本书</strong>在您的书库中</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>每月 5 次 AI 灵感</strong>（X-Ray、心情匹配、学习路径）</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">书籍扫描和 ISBN 查找</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">金句卡片生成</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">基础阅读笔记</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual Plan -->
+                <div class="pricing-card glass-card rounded-3xl p-8 relative border-2 border-accent">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-accent text-white px-4 py-1.5 rounded-full text-sm font-semibold">最受欢迎</span>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">个人版</h3>
+                        <p class="text-gray-600">适合专注阅读者</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <div class="flex items-baseline mb-2">
+                            <span class="text-5xl font-bold text-gray-900">¥23</span>
+                            <span class="text-gray-600 ml-2">/月</span>
+                        </div>
+                        <p class="text-sm text-gray-600">或 ¥228/年（节省 17%）</p>
+                    </div>
+
+                    <a href="https://apps.apple.com/app/bookra" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-6 rounded-xl font-semibold text-center text-white transition-colors mb-8" style="background: linear-gradient(135deg, #E07830 0%, #D46820 100%);">
+                        开始免费试用
+                    </a>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>无限书籍</strong>在您的书库中</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>无限 AI 灵感</strong>（X-Ray、心情匹配、学习路径）</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">优先 AI 处理</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">高级学习路径</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">导出书库数据</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">无广告体验</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Plan -->
+                <div class="pricing-card glass-card rounded-3xl p-8">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">家庭版</h3>
+                        <p class="text-gray-600">与最多 5 人共享</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <div class="flex items-baseline mb-2">
+                            <span class="text-5xl font-bold text-gray-900">¥38</span>
+                            <span class="text-gray-600 ml-2">/月</span>
+                        </div>
+                        <p class="text-sm text-gray-600">或 ¥388/年（节省 16%）</p>
+                    </div>
+
+                    <a href="https://apps.apple.com/app/bookra" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-6 rounded-xl font-semibold text-center bg-gray-200 text-gray-900 hover:bg-gray-300 transition-colors mb-8">
+                        开始免费试用
+                    </a>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>包含个人版所有功能</strong></span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>与最多 5 位家庭成员共享</strong></span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">每位成员独立书库</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">通过 Apple 家庭共享管理</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 feature-check mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700">家庭用户的最佳价值</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mt-20 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">常见问题</h2>
+
+                <div class="space-y-6">
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">可以先试用再购买吗？</h3>
+                        <p class="text-gray-700">可以！我们为个人版和家庭版提供 7 天免费试用。无需预先提供信用卡。</p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">如何取消订阅？</h3>
+                        <p class="text-gray-700">订阅通过 Apple 管理。前往设置 > [您的姓名] > 订阅 > Bookra > 取消订阅。您将保留访问权限直至账期结束。</p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">如果降级，我的数据会怎样？</h3>
+                        <p class="text-gray-700">您的数据永远不会被删除。如果您从 Pro 降级到免费版，您将保留所有书籍，但每月只能生成 5 次 AI 灵感。超过 30 本书的限制的书籍仍然可以阅读。</p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">有学生折扣吗？</h3>
+                        <p class="text-gray-700">我们正在为学生和教育工作者制定特别价格。请通过 <a href="mailto:support@bookra.im" class="text-accent hover:underline">support@bookra.im</a> 联系我们并提供您的学生证。</p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">接受哪些付款方式？</h3>
+                        <p class="text-gray-700">所有付款均通过 Apple App Store 处理，因此 Apple 接受的任何付款方式都适用于 Bookra（信用卡、Apple Pay、App Store 礼品卡等）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-white/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">准备好改变您的阅读方式？</h2>
+            <p class="text-xl text-gray-700 mb-8">加入数千名读者，通过 AI 发现更深的洞察</p>
+            <a href="https://apps.apple.com/app/bookra" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-lg transition-all" style="background: linear-gradient(135deg, #E07830 0%, #D46820 100%);">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                </svg>
+                在 App Store 下载
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-white/30 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="images/Bookra.png" alt="Bookra" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-gray-800">Bookra</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">AI 驱动的阅读伴侣</p>
+                </div>
+
+                <!-- Product -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">产品</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#features" class="text-gray-600 hover:text-accent transition-colors">功能特性</a></li>
+                        <li><a href="pricing-zh.html" class="text-gray-600 hover:text-accent transition-colors">价格</a></li>
+                        <li><a href="index.html#download" class="text-gray-600 hover:text-accent transition-colors">下载应用</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">支持</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="support-zh.html" class="text-gray-600 hover:text-accent transition-colors">帮助中心</a></li>
+                        <li><a href="support-zh.html#contact" class="text-gray-600 hover:text-accent transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-3">法律</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="privacy-zh.html" class="text-gray-600 hover:text-accent transition-colors">隐私政策</a></li>
+                        <li><a href="privacy-zh.html#terms" class="text-gray-600 hover:text-accent transition-colors">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-600 text-sm">© 2025 Bookra. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

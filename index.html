@@ -177,6 +177,7 @@
                 <div class="hidden md:flex items-center gap-6">
                     <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-i18n="nav.home">首页</a>
                     <a href="#features" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-i18n="nav.features">功能</a>
+                    <a href="pricing-zh.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-i18n="nav.pricing">价格</a>
                     <a href="support.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-i18n="nav.support">支持</a>
                     <a href="privacy.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-i18n="nav.privacy">隐私</a>
                     <a href="#download" class="cta-primary px-5 py-2.5 rounded-xl font-semibold text-white text-sm" data-i18n="nav.download">下载应用</a>
@@ -591,6 +592,7 @@
             zh: {
                 'nav.home': '首页',
                 'nav.features': '功能',
+                'nav.pricing': '价格',
                 'nav.support': '支持',
                 'nav.privacy': '隐私',
                 'nav.download': '下载应用',
@@ -657,6 +659,7 @@
             en: {
                 'nav.home': 'Home',
                 'nav.features': 'Features',
+                'nav.pricing': 'Pricing',
                 'nav.support': 'Support',
                 'nav.privacy': 'Privacy',
                 'nav.download': 'Download',
@@ -768,9 +771,10 @@
                 }
             });
 
-            // Update support and privacy links based on language
+            // Update support, privacy, and pricing links based on language
             const supportLinks = document.querySelectorAll('a[href*="support"]');
             const privacyLinks = document.querySelectorAll('a[href*="privacy"]');
+            const pricingLinks = document.querySelectorAll('a[href*="pricing"]');
 
             supportLinks.forEach(link => {
                 if (lang === 'zh') {
@@ -785,6 +789,14 @@
                     link.href = link.href.includes('#') ? 'privacy-zh.html' + link.href.split('#')[1] : 'privacy-zh.html';
                 } else {
                     link.href = link.href.includes('#') ? 'privacy.html' + link.href.split('#')[1] : 'privacy.html';
+                }
+            });
+
+            pricingLinks.forEach(link => {
+                if (lang === 'zh') {
+                    link.href = 'pricing-zh.html';
+                } else {
+                    link.href = 'pricing.html';
                 }
             });
 
