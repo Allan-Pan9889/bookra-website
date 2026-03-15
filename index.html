@@ -1,343 +1,775 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookra - AI Reading Companion</title>
-    <meta name="description" content="Transform your reading experience with AI-powered book analysis, personalized recommendations, and beautiful quote cards.">
+    <meta name="description" content="每一本书都藏着一个世界，让AI带你发现书中的深层智慧">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        beige: {
-                            50: '#FAF7F3',
-                            100: '#F4E8D8',
-                            200: '#E9DCC9',
-                            300: '#DEC9B0',
-                            400: '#D4B697',
-                        },
-                        accent: '#E07830',
-                        'accent-dark': '#C56524',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #F4E8D8 0%, #E9DCC9 100%);
+            color: #2C2416;
+            overflow-x: hidden;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #FAF7F3 0%, #F4E8D8 50%, #E9DCC9 100%);
+
+        .heading-font {
+            font-family: 'Caveat', cursive;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .feature-card {
-            transition: all 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(224, 120, 48, 0.15);
-        }
+
+        /* Screenshot Frame */
         .screenshot-frame {
             width: 100%;
-            max-width: 320px;
+            max-width: 375px;
             aspect-ratio: 9/19.5;
-            border-radius: 32px;
+            border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
             background: #000;
         }
+
         .screenshot-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
+        .hero-screenshot {
+            max-width: 450px;
+        }
+
+        .warm-glow {
+            box-shadow: 0 0 80px rgba(224, 120, 48, 0.3);
+        }
+
+        /* Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
         }
+
         .float-animation {
             animation: float 6s ease-in-out infinite;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Glass Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(224, 120, 48, 0.1);
+            box-shadow: 0 4px 20px rgba(224, 120, 48, 0.1);
+        }
+
+        /* Language Switch */
+        .lang-switch {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            transform: scale(1.05);
+        }
+
+        .lang-active {
+            background: #E07830;
+            color: white;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(135deg, #E07830 0%, #C56524 100%);
+            box-shadow: 0 8px 24px rgba(224, 120, 48, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(224, 120, 48, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(0px);
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .float-animation {
                 animation: none;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero-screenshot {
+                max-width: 300px;
+            }
+        }
     </style>
 </head>
-<body class="gradient-bg">
+<body>
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-5">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                    </svg>
-                    <span class="text-2xl font-bold text-gray-800">Bookra</span>
+                <!-- Logo - 更大更醒目 -->
+                <div class="flex items-center space-x-3">
+                    <img src="images/Bookra.png" alt="Bookra Logo" class="h-12 w-auto">
+                    <span class="text-3xl font-bold heading-font" style="color: #2C2416;">Bookra</span>
                 </div>
+
+                <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-gray-700 hover:text-accent transition-colors">Features</a>
-                    <a href="#screenshots" class="text-gray-700 hover:text-accent transition-colors">Screenshots</a>
-                    <a href="support.html" class="text-gray-700 hover:text-accent transition-colors">Support</a>
-                    <a href="privacy.html" class="text-gray-700 hover:text-accent transition-colors">Privacy</a>
+                    <a href="#features" class="text-gray-700 hover:text-orange-600 transition-colors font-medium text-lg" data-nav="nav.features">功能</a>
+                    <a href="support.html" class="text-gray-700 hover:text-orange-600 transition-colors font-medium text-lg" data-nav="nav.support">支持</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-orange-600 transition-colors font-medium text-lg" data-nav="nav.privacy">隐私</a>
+                    <a href="#download" class="cta-button px-7 py-3 rounded-full font-bold text-white cursor-pointer text-lg" data-nav="nav.download">下载应用</a>
+                </div>
+
+                <!-- Language Switcher -->
+                <div class="flex gap-2 bg-white/80 rounded-full p-2 shadow-md">
+                    <button onclick="switchLanguage('zh')" id="lang-zh" class="lang-switch lang-active px-5 py-2.5 rounded-full font-semibold text-base">
+                        中文
+                    </button>
+                    <button onclick="switchLanguage('en')" id="lang-en" class="lang-switch px-5 py-2.5 rounded-full font-semibold text-base" style="color: #E07830;">
+                        EN
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section with Real Screenshot -->
-    <section class="pt-32 pb-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                        Your Books,<br>
-                        <span class="text-accent">Elevated by AI</span>
+    <!-- Hero Section -->
+    <section id="features" class="min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left: Copy -->
+                <div class="space-y-8 fade-in">
+                    <!-- Badge -->
+                    <div class="inline-block">
+                        <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+                            <p class="text-sm font-semibold tracking-wide" style="color: #E07830;" data-i18n="hero.badge">
+                                YOUR READING COMPANION
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="heading-font text-6xl md:text-8xl font-bold leading-tight" style="color: #2C2416;" data-i18n="hero.title">
+                        每一本书<br>
+                        都藏着<br>
+                        一个世界
                     </h1>
-                    <p class="text-xl text-gray-700 mb-8 leading-relaxed">
-                        Transform your reading experience with AI-powered insights, personalized recommendations, and beautiful quote cards that bring your favorite passages to life.
+
+                    <h2 class="text-2xl md:text-3xl font-light text-gray-700" data-i18n="hero.subtitle">
+                        让 AI 带你发现书中的深层智慧
+                    </h2>
+
+                    <!-- English Subtitle -->
+                    <p class="text-xl text-gray-600 italic" data-i18n="hero.tagline">
+                        Every Book Holds a Universe — Discover It with AI
                     </p>
-                    <div class="flex flex-col sm:flex-row items-center gap-4">
-                        <a href="#" class="inline-flex items-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-full transition-colors shadow-lg hover:shadow-xl cursor-pointer">
-                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+
+                    <!-- CTA -->
+                    <div class="pt-6">
+                        <a href="#download" class="cta-button inline-flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-white text-xl cursor-pointer shadow-2xl">
+                            <svg class="w-7 h-7 mr-3" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
                             </svg>
-                            Download on App Store
+                            <span data-i18n="hero.cta">在 App Store 下载</span>
                         </a>
-                        <a href="#screenshots" class="inline-flex items-center px-8 py-4 bg-white hover:bg-beige-100 text-gray-800 font-semibold rounded-full transition-colors shadow-md cursor-pointer">
-                            See Screenshots
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </a>
+                    </div>
+
+                    <!-- Feature Badges -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="bg-white/60 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
+                            <p class="text-base font-medium" data-i18n="hero.feature1">✨ AI 深度分析</p>
+                        </div>
+                        <div class="bg-white/60 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
+                            <p class="text-base font-medium" data-i18n="hero.feature2">📚 批量扫描书架</p>
+                        </div>
+                        <div class="bg-white/60 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
+                            <p class="text-base font-medium" data-i18n="hero.feature3">💡 心情匹配推荐</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Hero Screenshot -->
-                <div class="flex justify-center">
-                    <div class="screenshot-frame float-animation">
-                        <img src="images/IMG_4839.PNG" alt="Bookra App - Beautiful Book Library" loading="eager">
+                <!-- Right: Hero Screenshot -->
+                <div class="flex justify-center float-animation">
+                    <div class="screenshot-frame hero-screenshot warm-glow">
+                        <img src="images/IMG_4839.PNG" alt="Bookra App Library View">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Screenshots Gallery Section -->
-    <section id="screenshots" class="py-20 px-6 bg-white/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">See Bookra in Action</h2>
-                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Experience the power of AI-driven reading</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Screenshot 1: Batch Scanning -->
-                <div class="space-y-6">
-                    <div class="screenshot-frame mx-auto">
-                        <img src="images/IMG_4901.PNG" alt="Batch Book Scanning" loading="lazy">
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Lightning Fast Scanning</h3>
-                        <p class="text-gray-700">Capture entire bookshelves in seconds with AI spine recognition</p>
+    <!-- Feature 1: Batch Scanning -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Screenshot Frame -->
+                <div class="order-2 md:order-1 flex justify-center float-animation">
+                    <div class="screenshot-frame warm-glow">
+                        <img src="images/IMG_4901.PNG" alt="AI Bookshelf Scanning">
                     </div>
                 </div>
 
-                <!-- Screenshot 2: AI X-Ray -->
-                <div class="space-y-6">
-                    <div class="screenshot-frame mx-auto">
-                        <img src="images/IMG_4855.PNG" alt="AI X-Ray Analysis" loading="lazy">
+                <!-- Copy -->
+                <div class="order-1 md:order-2 space-y-6 fade-in">
+                    <div class="inline-block bg-white/70 px-4 py-2 rounded-full">
+                        <p class="text-sm font-semibold" style="color: #E07830;" data-i18n="section1.badge">01 / BATCH SCANNING</p>
                     </div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">AI X-Ray Analysis</h3>
-                        <p class="text-gray-700">Deep insights through Skeleton, Dissection, and Soul dimensions</p>
-                    </div>
-                </div>
 
-                <!-- Screenshot 3: Mood Recommendations -->
-                <div class="space-y-6">
-                    <div class="screenshot-frame mx-auto">
-                        <img src="images/IMG_4844.PNG" alt="Mood-Based Recommendations" loading="lazy">
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Mood-Based Matching</h3>
-                        <p class="text-gray-700">Find the perfect book for your current emotional state</p>
-                    </div>
-                </div>
-            </div>
+                    <h2 class="heading-font text-5xl md:text-6xl font-bold" style="color: #2C2416;" data-i18n="section1.title">
+                        拍张照<br>
+                        整个书架<br>
+                        瞬间入库
+                    </h2>
 
-            <!-- Second Row -->
-            <div class="grid md:grid-cols-2 gap-12 mt-12 max-w-4xl mx-auto">
-                <!-- Screenshot 4: Reading Paths -->
-                <div class="space-y-6">
-                    <div class="screenshot-frame mx-auto">
-                        <img src="images/IMG_4846.PNG" alt="Themed Reading Paths" loading="lazy">
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Themed Reading Paths</h3>
-                        <p class="text-gray-700">Follow curated journeys through interconnected topics</p>
-                    </div>
-                </div>
+                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed" data-i18n="section1.description">
+                        不用一本本扫描。对准书架拍一张照片，AI 自动识别所有书脊，一次添加多本书籍。
+                    </p>
 
-                <!-- Screenshot 5: Quote Cards -->
-                <div class="space-y-6">
-                    <div class="screenshot-frame mx-auto">
-                        <img src="images/IMG_4841.PNG" alt="Beautiful Quote Cards" loading="lazy">
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Beautiful Quote Cards</h3>
-                        <p class="text-gray-700">Transform highlights into shareable artwork</p>
+                    <p class="text-lg md:text-xl text-gray-600 italic" data-i18n="section1.subtitle">
+                        Snap a photo of your bookshelf,<br>
+                        add dozens of books instantly
+                    </p>
+
+                    <div class="pt-4">
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+                            <p class="text-base text-gray-700" data-i18n="section1.limits">
+                                <strong>30本书</strong> → 免费用户<br>
+                                <strong>无限书籍</strong> → Pro 会员
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Powerful Features</h2>
-                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Everything you need to transform your reading experience</p>
+    <!-- Feature 2: AI X-Ray Analysis -->
+    <section class="py-20 px-6" style="background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(244,232,216,0.5) 100%);">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Copy -->
+                <div class="space-y-6 fade-in">
+                    <div class="inline-block bg-white/70 px-4 py-2 rounded-full">
+                        <p class="text-sm font-semibold" style="color: #E07830;" data-i18n="section2.badge">02 / AI-POWERED INSIGHTS</p>
+                    </div>
+
+                    <h2 class="heading-font text-5xl md:text-6xl font-bold" style="color: #2C2416;" data-i18n="section2.title">
+                        Bookra 带你读<br>
+                        深入骨髓的<br>
+                        理解
+                    </h2>
+
+                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed" data-i18n="section2.description">
+                        AI X-Ray 从三个维度透视每本书：<br>
+                        <strong>骨架</strong>（核心论点）、<strong>解剖</strong>（论证逻辑）、<strong>灵魂</strong>（跨域应用）
+                    </p>
+
+                    <p class="text-lg md:text-xl text-gray-600 italic" data-i18n="section2.subtitle">
+                        X-Ray your books with AI:<br>
+                        Skeleton · Dissection · Soul
+                    </p>
+
+                    <div class="pt-4 space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="text-3xl">🎯</span>
+                            <div>
+                                <p class="font-semibold text-gray-800 text-lg" data-i18n="section2.point1.title">核心公式</p>
+                                <p class="text-base text-gray-600" data-i18n="section2.point1.desc">提炼全书最重要的思想框架</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-3xl">🔍</span>
+                            <div>
+                                <p class="font-semibold text-gray-800 text-lg" data-i18n="section2.point2.title">论证逻辑</p>
+                                <p class="text-base text-gray-600" data-i18n="section2.point2.desc">分析最强论据和潜在局限</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-3xl">✨</span>
+                            <div>
+                                <p class="font-semibold text-gray-800 text-lg" data-i18n="section2.point3.title">行动指南</p>
+                                <p class="text-base text-gray-600" data-i18n="section2.point3.desc">一句话总结 + 跨领域应用</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screenshot Frame -->
+                <div class="flex justify-center float-animation" style="animation-delay: -2s;">
+                    <div class="screenshot-frame warm-glow">
+                        <img src="images/IMG_4855.PNG" alt="AI X-Ray Analysis">
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
-                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                        </svg>
+    <!-- Feature 3: Mood Match -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Screenshot Frame -->
+                <div class="order-2 md:order-1 flex justify-center float-animation" style="animation-delay: -4s;">
+                    <div class="screenshot-frame warm-glow">
+                        <img src="images/IMG_4844.PNG" alt="Mood Match Feature">
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Lightning Book Scanning</h3>
-                    <p class="text-gray-700 leading-relaxed">Capture entire bookshelves in seconds with batch spine recognition. Build your digital library effortlessly.</p>
                 </div>
 
-                <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
-                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
+                <!-- Copy -->
+                <div class="order-1 md:order-2 space-y-6 fade-in">
+                    <div class="inline-block bg-white/70 px-4 py-2 rounded-full">
+                        <p class="text-sm font-semibold" style="color: #E07830;" data-i18n="section3.badge">03 / MOOD-BASED RECOMMENDATIONS</p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">AI X-Ray Analysis</h3>
-                    <p class="text-gray-700 leading-relaxed">Explore books through three dimensions: Skeleton, Dissection, and Soul. Understand deeper meanings instantly.</p>
+
+                    <h2 class="heading-font text-5xl md:text-6xl font-bold" style="color: #2C2416;" data-i18n="section3.title">
+                        此刻的心情<br>
+                        最适合读<br>
+                        哪本书？
+                    </h2>
+
+                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed" data-i18n="section3.description">
+                        只需描述你的心情，AI 就能从你的书架中找到最能共鸣的书籍，并解释为什么它们适合你。
+                    </p>
+
+                    <p class="text-lg md:text-xl text-gray-600 italic" data-i18n="section3.subtitle">
+                        "Bedtime relax" → AI finds the perfect match<br>
+                        from your personal library
+                    </p>
+
+                    <div class="pt-4 bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl">
+                        <p class="text-base text-gray-700 italic mb-2" data-i18n="section3.example.input">
+                            "想要放松，但不要太轻松..."
+                        </p>
+                        <p class="font-semibold text-lg" style="color: #E07830;" data-i18n="section3.example.result">
+                            → 《小王子》90% 匹配
+                        </p>
+                        <p class="text-sm text-gray-600 mt-2" data-i18n="section3.example.reason">
+                            这本书能帮你放松心情，提供不同角度的启发...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4: Reading Path -->
+    <section class="py-20 px-6" style="background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(244,232,216,0.5) 100%);">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Copy -->
+                <div class="space-y-6 fade-in">
+                    <div class="inline-block bg-white/70 px-4 py-2 rounded-full">
+                        <p class="text-sm font-semibold" style="color: #E07830;" data-i18n="section4.badge">04 / THEMED LEARNING PATHS</p>
+                    </div>
+
+                    <h2 class="heading-font text-5xl md:text-6xl font-bold" style="color: #2C2416;" data-i18n="section4.title">
+                        主题阅读路径<br>
+                        从入门到精通<br>
+                        一次规划
+                    </h2>
+
+                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed" data-i18n="section4.description">
+                        告诉 AI 你想学什么主题，它会从你的书架中规划出一条循序渐进的学习路径。
+                    </p>
+
+                    <p class="text-lg md:text-xl text-gray-600 italic" data-i18n="section4.subtitle">
+                        "Psychology basics" →<br>
+                        AI creates your personalized learning roadmap
+                    </p>
+
+                    <div class="pt-4 space-y-3">
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background: #E07830;">
+                                1
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800 text-lg" data-i18n="section4.step1.title">心理学与生活</p>
+                                <p class="text-base text-gray-600" data-i18n="section4.step1.time">第1周 · 基础入门</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background: #E07830;">
+                                2
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800 text-lg" data-i18n="section4.step2.title">小王子</p>
+                                <p class="text-base text-gray-600" data-i18n="section4.step2.time">第2周 · 心理哲学</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background: #E07830;">
+                                3
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800 text-lg" data-i18n="section4.step3.title">存在的瞬间</p>
+                                <p class="text-base text-gray-600" data-i18n="section4.step3.time">第3周 · 应用实践</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
-                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
+                <!-- Screenshot Frame -->
+                <div class="flex justify-center float-animation">
+                    <div class="screenshot-frame warm-glow">
+                        <img src="images/IMG_4846.PNG" alt="Reading Path Feature">
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mood-Based Recommendations</h3>
-                    <p class="text-gray-700 leading-relaxed">Find the perfect book for how you're feeling right now. AI understands your emotional needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 5: Quote Cards -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Screenshot Frame -->
+                <div class="order-2 md:order-1 flex justify-center float-animation" style="animation-delay: -1s;">
+                    <div class="screenshot-frame warm-glow">
+                        <img src="images/IMG_4841.PNG" alt="Quote Card Feature">
+                    </div>
                 </div>
 
-                <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
-                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
-                        </svg>
+                <!-- Copy -->
+                <div class="order-1 md:order-2 space-y-6 fade-in">
+                    <div class="inline-block bg-white/70 px-4 py-2 rounded-full">
+                        <p class="text-sm font-semibold" style="color: #E07830;" data-i18n="section5.badge">05 / BEAUTIFUL QUOTE CARDS</p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Themed Reading Paths</h3>
-                    <p class="text-gray-700 leading-relaxed">Follow curated journeys through interconnected topics. Discover unexpected connections between books.</p>
-                </div>
 
-                <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
-                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Beautiful Quote Cards</h3>
-                    <p class="text-gray-700 leading-relaxed">Transform highlights into shareable artwork with elegant warm beige aesthetics. Share your favorite passages.</p>
-                </div>
+                    <h2 class="heading-font text-5xl md:text-6xl font-bold" style="color: #2C2416;" data-i18n="section5.title">
+                        金句卡片<br>
+                        值得珍藏的<br>
+                        文字之美
+                    </h2>
 
-                <div class="feature-card glass-card rounded-2xl p-8 cursor-pointer">
-                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-                        </svg>
+                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed" data-i18n="section5.description">
+                        每一句触动心灵的文字，都可以生成精美的卡片。10种配色任选，保存分享，让美好永存。
+                    </p>
+
+                    <p class="text-lg md:text-xl text-gray-600 italic" data-i18n="section5.subtitle">
+                        Transform inspiring quotes into<br>
+                        stunning visual cards
+                    </p>
+
+                    <div class="pt-4 grid grid-cols-2 gap-3">
+                        <div class="bg-gradient-to-br from-slate-700 to-slate-900 p-4 rounded-xl text-white text-center">
+                            <p class="text-sm" data-i18n="section5.palette1">暗夜诗意</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-amber-100 to-amber-200 p-4 rounded-xl text-center">
+                            <p class="text-sm text-gray-800" data-i18n="section5.palette2">暖米色系</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-4 rounded-xl text-white text-center">
+                            <p class="text-sm" data-i18n="section5.palette3">森林绿意</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-500 to-pink-500 p-4 rounded-xl text-white text-center">
+                            <p class="text-sm" data-i18n="section5.palette4">梦幻渐变</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cross-Book Insights</h3>
-                    <p class="text-gray-700 leading-relaxed">Discover unexpected connections between books in your library. See how ideas relate across different works.</p>
+
+                    <div class="pt-2">
+                        <p class="text-base text-gray-600" data-i18n="section5.features">
+                            💾 保存到相册 • 📤 分享给朋友 • 🎨 10种精选配色
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="glass-card rounded-3xl p-12 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ready to Transform Your Reading?</h2>
-                <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">Join thousands of readers who are discovering deeper connections in their books.</p>
-                <a href="#" class="inline-flex items-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-semibold rounded-full transition-colors shadow-lg hover:shadow-xl cursor-pointer">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+    <section id="download" class="py-32 px-6 text-center">
+        <div class="max-w-4xl mx-auto space-y-8 fade-in">
+            <h2 class="heading-font text-6xl md:text-8xl font-bold" style="color: #2C2416;" data-i18n="cta.title">
+                开始你的<br>
+                智慧阅读之旅
+            </h2>
+
+            <p class="text-2xl md:text-3xl text-gray-700" data-i18n="cta.subtitle">
+                用 AI 重新发现读书的乐趣
+            </p>
+
+            <p class="text-xl text-gray-600 italic" data-i18n="cta.tagline">
+                Rediscover the Joy of Reading with AI
+            </p>
+
+            <div class="pt-8 space-y-6">
+                <a href="#" class="cta-button inline-flex items-center px-12 py-6 rounded-2xl font-bold text-white text-2xl cursor-pointer shadow-2xl">
+                    <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
                     </svg>
-                    Download Now
+                    <span data-i18n="cta.download">在 App Store 下载</span>
                 </a>
+
+                <div class="inline-block bg-white/80 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-lg">
+                    <p class="text-xl font-semibold" style="color: #E07830;" data-i18n="cta.offer">
+                        免费试用 • 30本书籍 • 5次AI灵感/月
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center text-base text-gray-600">
+                    <span data-i18n="cta.feature1">✓ 批量扫描书架</span>
+                    <span data-i18n="cta.feature2">✓ AI 深度分析</span>
+                    <span data-i18n="cta.feature3">✓ 心情匹配推荐</span>
+                    <span data-i18n="cta.feature4">✓ 主题阅读路径</span>
+                    <span data-i18n="cta.feature5">✓ 精美金句卡片</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-gray-200">
+    <footer class="py-12 px-6 border-t border-gray-300/50" style="background: rgba(255, 255, 255, 0.3);">
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                        <span class="text-xl font-bold text-gray-800">Bookra</span>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="images/Bookra.png" alt="Bookra Logo" class="h-10 w-auto">
+                        <span class="text-2xl font-bold heading-font" style="color: #2C2416;">Bookra</span>
                     </div>
-                    <p class="text-gray-600 text-sm">AI-powered reading companion</p>
+                    <p class="text-gray-600 text-base" data-i18n="footer.tagline">AI 驱动的阅读伴侣</p>
                 </div>
+
+                <!-- Product -->
                 <div>
-                    <h4 class="font-semibold text-gray-900 mb-4">Product</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#features" class="text-gray-600 hover:text-accent transition-colors">Features</a></li>
-                        <li><a href="#screenshots" class="text-gray-600 hover:text-accent transition-colors">Screenshots</a></li>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-lg" data-i18n="footer.product">产品</h4>
+                    <ul class="space-y-2 text-base">
+                        <li><a href="#features" class="text-gray-600 hover:text-orange-600 transition-colors" data-i18n="footer.features">功能特性</a></li>
+                        <li><a href="#download" class="text-gray-600 hover:text-orange-600 transition-colors" data-i18n="footer.download">下载应用</a></li>
                     </ul>
                 </div>
+
+                <!-- Support -->
                 <div>
-                    <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="support.html" class="text-gray-600 hover:text-accent transition-colors">Help Center</a></li>
-                        <li><a href="support.html#contact" class="text-gray-600 hover:text-accent transition-colors">Contact Us</a></li>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-lg" data-i18n="footer.support">支持</h4>
+                    <ul class="space-y-2 text-base">
+                        <li><a href="support.html" class="text-gray-600 hover:text-orange-600 transition-colors" data-i18n="footer.help">帮助中心</a></li>
+                        <li><a href="support.html#contact" class="text-gray-600 hover:text-orange-600 transition-colors" data-i18n="footer.contact">联系我们</a></li>
                     </ul>
                 </div>
+
+                <!-- Legal -->
                 <div>
-                    <h4 class="font-semibold text-gray-900 mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="privacy.html" class="text-gray-600 hover:text-accent transition-colors">Privacy Policy</a></li>
-                        <li><a href="privacy.html#terms" class="text-gray-600 hover:text-accent transition-colors">Terms of Service</a></li>
+                    <h4 class="font-semibold text-gray-900 mb-4 text-lg" data-i18n="footer.legal">法律</h4>
+                    <ul class="space-y-2 text-base">
+                        <li><a href="privacy.html" class="text-gray-600 hover:text-orange-600 transition-colors" data-i18n="footer.privacy">隐私政策</a></li>
+                        <li><a href="privacy.html#terms" class="text-gray-600 hover:text-orange-600 transition-colors" data-i18n="footer.terms">服务条款</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-8 border-t border-gray-200 text-center">
-                <p class="text-gray-600 text-sm">© 2025 Bookra. All rights reserved.</p>
+
+            <!-- Bottom -->
+            <div class="pt-8 border-t border-gray-300/50 text-center">
+                <p class="text-gray-600 text-base">© 2025 Bookra. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Smooth scrolling
+        const translations = {
+            zh: {
+                'nav.features': '功能',
+                'nav.support': '支持',
+                'nav.privacy': '隐私',
+                'nav.download': '下载应用',
+                'hero.badge': 'YOUR READING COMPANION',
+                'hero.title': '每一本书<br>都藏着<br>一个世界',
+                'hero.subtitle': '让 AI 带你发现书中的深层智慧',
+                'hero.tagline': 'Every Book Holds a Universe — Discover It with AI',
+                'hero.cta': '在 App Store 下载',
+                'hero.feature1': '✨ AI 深度分析',
+                'hero.feature2': '📚 批量扫描书架',
+                'hero.feature3': '💡 心情匹配推荐',
+                'section1.badge': '01 / 批量扫描入库',
+                'section1.title': '拍张照<br>整个书架<br>瞬间入库',
+                'section1.description': '不用一本本扫描。对准书架拍一张照片，AI 自动识别所有书脊，一次添加多本书籍。',
+                'section1.subtitle': 'Snap a photo of your bookshelf,<br>add dozens of books instantly',
+                'section1.limits': '<strong>30本书</strong> → 免费用户<br><strong>无限书籍</strong> → Pro 会员',
+                'section2.badge': '02 / AI 深度分析',
+                'section2.title': 'Bookra 带你读<br>深入骨髓的<br>理解',
+                'section2.description': 'AI X-Ray 从三个维度透视每本书：<br><strong>骨架</strong>（核心论点）、<strong>解剖</strong>（论证逻辑）、<strong>灵魂</strong>（跨域应用）',
+                'section2.subtitle': 'X-Ray your books with AI:<br>Skeleton · Dissection · Soul',
+                'section2.point1.title': '核心公式',
+                'section2.point1.desc': '提炼全书最重要的思想框架',
+                'section2.point2.title': '论证逻辑',
+                'section2.point2.desc': '分析最强论据和潜在局限',
+                'section2.point3.title': '行动指南',
+                'section2.point3.desc': '一句话总结 + 跨领域应用',
+                'section3.badge': '03 / 心情匹配推荐',
+                'section3.title': '此刻的心情<br>最适合读<br>哪本书？',
+                'section3.description': '只需描述你的心情，AI 就能从你的书架中找到最能共鸣的书籍，并解释为什么它们适合你。',
+                'section3.subtitle': '"Bedtime relax" → AI finds the perfect match<br>from your personal library',
+                'section3.example.input': '"想要放松，但不要太轻松..."',
+                'section3.example.result': '→ 《小王子》90% 匹配',
+                'section3.example.reason': '这本书能帮你放松心情，提供不同角度的启发...',
+                'section4.badge': '04 / 主题学习路径',
+                'section4.title': '主题阅读路径<br>从入门到精通<br>一次规划',
+                'section4.description': '告诉 AI 你想学什么主题，它会从你的书架中规划出一条循序渐进的学习路径。',
+                'section4.subtitle': '"Psychology basics" →<br>AI creates your personalized learning roadmap',
+                'section4.step1.title': '心理学与生活',
+                'section4.step1.time': '第1周 · 基础入门',
+                'section4.step2.title': '小王子',
+                'section4.step2.time': '第2周 · 心理哲学',
+                'section4.step3.title': '存在的瞬间',
+                'section4.step3.time': '第3周 · 应用实践',
+                'section5.badge': '05 / 精美金句卡片',
+                'section5.title': '金句卡片<br>值得珍藏的<br>文字之美',
+                'section5.description': '每一句触动心灵的文字，都可以生成精美的卡片。10种配色任选，保存分享，让美好永存。',
+                'section5.subtitle': 'Transform inspiring quotes into<br>stunning visual cards',
+                'section5.palette1': '暗夜诗意',
+                'section5.palette2': '暖米色系',
+                'section5.palette3': '森林绿意',
+                'section5.palette4': '梦幻渐变',
+                'section5.features': '💾 保存到相册 • 📤 分享给朋友 • 🎨 10种精选配色',
+                'cta.title': '开始你的<br>智慧阅读之旅',
+                'cta.subtitle': '用 AI 重新发现读书的乐趣',
+                'cta.tagline': 'Rediscover the Joy of Reading with AI',
+                'cta.download': '在 App Store 下载',
+                'cta.offer': '免费试用 • 30本书籍 • 5次AI灵感/月',
+                'cta.feature1': '✓ 批量扫描书架',
+                'cta.feature2': '✓ AI 深度分析',
+                'cta.feature3': '✓ 心情匹配推荐',
+                'cta.feature4': '✓ 主题阅读路径',
+                'cta.feature5': '✓ 精美金句卡片',
+                'footer.tagline': 'AI 驱动的阅读伴侣',
+                'footer.product': '产品',
+                'footer.features': '功能特性',
+                'footer.download': '下载应用',
+                'footer.support': '支持',
+                'footer.help': '帮助中心',
+                'footer.contact': '联系我们',
+                'footer.legal': '法律',
+                'footer.privacy': '隐私政策',
+                'footer.terms': '服务条款'
+            },
+            en: {
+                'nav.features': 'Features',
+                'nav.support': 'Support',
+                'nav.privacy': 'Privacy',
+                'nav.download': 'Download',
+                'hero.badge': 'YOUR READING COMPANION',
+                'hero.title': 'Every Book<br>Holds a<br>Universe',
+                'hero.subtitle': 'Discover Deep Insights with AI',
+                'hero.tagline': 'Transform Your Reading Experience',
+                'hero.cta': 'Download on App Store',
+                'hero.feature1': '✨ AI-Powered Analysis',
+                'hero.feature2': '📚 Batch Bookshelf Scanning',
+                'hero.feature3': '💡 Mood-Based Recommendations',
+                'section1.badge': '01 / BATCH SCANNING',
+                'section1.title': 'Snap a Photo<br>Add Your Entire<br>Bookshelf',
+                'section1.description': 'No need to scan one by one. Just take a photo of your bookshelf, and AI automatically recognizes all book spines to add multiple books at once.',
+                'section1.subtitle': 'Batch scanning that feels like magic',
+                'section1.limits': '<strong>30 books</strong> → Free users<br><strong>Unlimited books</strong> → Pro members',
+                'section2.badge': '02 / AI-POWERED INSIGHTS',
+                'section2.title': 'X-Ray Your Books<br>With Deep<br>Understanding',
+                'section2.description': 'AI X-Ray analyzes each book from three dimensions:<br><strong>Skeleton</strong> (core thesis), <strong>Dissection</strong> (logic analysis), <strong>Soul</strong> (actionable insights)',
+                'section2.subtitle': 'Skeleton · Dissection · Soul',
+                'section2.point1.title': 'Core Formula',
+                'section2.point1.desc': 'Extract the most important framework',
+                'section2.point2.title': 'Logic Analysis',
+                'section2.point2.desc': 'Analyze strongest arguments and limitations',
+                'section2.point3.title': 'Action Guide',
+                'section2.point3.desc': 'One-sentence takeaway + cross-domain applications',
+                'section3.badge': '03 / MOOD-BASED RECOMMENDATIONS',
+                'section3.title': 'What Should<br>You Read<br>Right Now?',
+                'section3.description': 'Simply describe your mood, and AI finds the books that resonate most from your library, explaining why they\'re perfect for you.',
+                'section3.subtitle': 'AI understands your feelings and finds the perfect match',
+                'section3.example.input': '"Want to relax, but not too much..."',
+                'section3.example.result': '→ "The Little Prince" 90% Match',
+                'section3.example.reason': 'This book helps you relax while offering different perspectives...',
+                'section4.badge': '04 / THEMED LEARNING PATHS',
+                'section4.title': 'Learning Paths<br>From Beginner<br>to Expert',
+                'section4.description': 'Tell AI what topic you want to learn, and it creates a progressive learning path from your bookshelf.',
+                'section4.subtitle': 'AI creates your personalized learning roadmap',
+                'section4.step1.title': 'Psychology & Life',
+                'section4.step1.time': 'Week 1 · Foundation',
+                'section4.step2.title': 'The Little Prince',
+                'section4.step2.time': 'Week 2 · Philosophy',
+                'section4.step3.title': 'The Power of Now',
+                'section4.step3.time': 'Week 3 · Practice',
+                'section5.badge': '05 / BEAUTIFUL QUOTE CARDS',
+                'section5.title': 'Quote Cards<br>Turn Words<br>Into Art',
+                'section5.description': 'Every inspiring quote can become a beautiful card. Choose from 10 color palettes, save and share with one tap.',
+                'section5.subtitle': 'Create stunning visual cards from your favorite quotes',
+                'section5.palette1': 'Midnight Poetry',
+                'section5.palette2': 'Warm Beige',
+                'section5.palette3': 'Forest Green',
+                'section5.palette4': 'Dream Gradient',
+                'section5.features': '💾 Save to Photos • 📤 Share with Friends • 🎨 10 Color Palettes',
+                'cta.title': 'Start Your<br>Reading Journey',
+                'cta.subtitle': 'Rediscover the Joy of Reading with AI',
+                'cta.tagline': 'Your Intelligent Reading Companion',
+                'cta.download': 'Download Now',
+                'cta.offer': 'Free Trial • 30 Books • 5 AI Insights/Month',
+                'cta.feature1': '✓ Batch Bookshelf Scanning',
+                'cta.feature2': '✓ AI Deep Analysis',
+                'cta.feature3': '✓ Mood-Based Recommendations',
+                'cta.feature4': '✓ Themed Learning Paths',
+                'cta.feature5': '✓ Beautiful Quote Cards',
+                'footer.tagline': 'AI-Powered Reading Companion',
+                'footer.product': 'Product',
+                'footer.features': 'Features',
+                'footer.download': 'Download',
+                'footer.support': 'Support',
+                'footer.help': 'Help Center',
+                'footer.contact': 'Contact Us',
+                'footer.legal': 'Legal',
+                'footer.privacy': 'Privacy Policy',
+                'footer.terms': 'Terms of Service'
+            }
+        };
+
+        let currentLang = 'zh';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            document.getElementById('lang-zh').classList.toggle('lang-active', lang === 'zh');
+            document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
+
+            document.getElementById('lang-zh').style.color = lang === 'zh' ? 'white' : '#E07830';
+            document.getElementById('lang-en').style.color = lang === 'en' ? 'white' : '#E07830';
+
+            const elements = document.querySelectorAll('[data-i18n], [data-nav]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n') || element.getAttribute('data-nav');
+                if (key && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            localStorage.setItem('bookra-lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('bookra-lang') || 'zh';
+            switchLanguage(savedLang);
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
