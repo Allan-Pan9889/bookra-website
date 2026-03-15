@@ -41,28 +41,29 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Feature Cards */
-        .feature-card {
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        /* Full Screen Sections */
+        .full-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 24px;
         }
 
         /* Screenshot with Device Frame */
         .phone-frame {
-            width: 280px;
+            width: 320px;
             aspect-ratio: 9/19.5;
-            border-radius: 36px;
+            border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             position: relative;
             background: #000;
+            transition: transform 0.4s ease;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
         }
 
         .phone-frame img {
@@ -75,7 +76,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -84,7 +85,7 @@
         }
 
         .animate-in {
-            animation: fadeInUp 0.6s ease-out forwards;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         /* CTA Button */
@@ -96,7 +97,7 @@
 
         .cta-primary:hover {
             box-shadow: 0 8px 24px rgba(224, 120, 48, 0.4);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         /* Language Switch */
@@ -115,23 +116,42 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            border-radius: 12px;
+            padding: 10px 20px;
+            border-radius: 16px;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
-        /* Grid Layout */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+        /* Feature Sections - Alternating Backgrounds */
+        .bg-feature-1 {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+        }
+
+        .bg-feature-2 {
+            background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%);
+        }
+
+        .bg-feature-3 {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+        }
+
+        .bg-feature-4 {
+            background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+        }
+
+        .bg-feature-5 {
+            background: linear-gradient(135deg, #FFF1F2 0%, #FCE7F3 100%);
         }
 
         @media (max-width: 768px) {
             .phone-frame {
-                width: 220px;
+                width: 260px;
+            }
+
+            .full-section {
+                min-height: auto;
+                padding: 60px 24px;
             }
         }
 
@@ -171,169 +191,306 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-4xl mx-auto mb-16 animate-in">
-                <div class="inline-flex items-center gap-2 bg-orange-50 text-orange-700 px-4 py-2 rounded-full mb-6">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                    <span class="text-sm font-semibold" data-i18n="hero.badge">AI 驱动的阅读伴侣</span>
-                </div>
-
-                <h1 class="heading-font text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" data-i18n="hero.title">
-                    每一本书<br>都藏着一个世界
-                </h1>
-
-                <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed" data-i18n="hero.subtitle">
-                    让 AI 带你发现书中的深层智慧
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#download" class="cta-primary inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-base">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+    <!-- Hero Section - Left Text, Right Image -->
+    <section class="full-section">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left: Text Content -->
+                <div class="animate-in">
+                    <div class="inline-flex items-center gap-2 bg-orange-50 text-orange-700 px-4 py-2 rounded-full mb-6">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
-                        <span data-i18n="hero.cta">在 App Store 下载</span>
-                    </a>
+                        <span class="text-sm font-semibold" data-i18n="hero.badge">AI 驱动的阅读伴侣</span>
+                    </div>
+
+                    <h1 class="heading-font text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" data-i18n="hero.title">
+                        每一本书<br>都藏着一个世界
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed" data-i18n="hero.subtitle">
+                        让 AI 带你发现书中的深层智慧
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-start gap-4 mb-6">
+                        <a href="#download" class="cta-primary inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-base">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                            </svg>
+                            <span data-i18n="hero.cta">在 App Store 下载</span>
+                        </a>
+                    </div>
+
+                    <p class="text-sm text-gray-500" data-i18n="hero.offer">免费试用 · 30本书籍 · 5次AI灵感/月</p>
                 </div>
 
-                <p class="text-sm text-gray-500 mt-6" data-i18n="hero.offer">免费试用 · 30本书籍 · 5次AI灵感/月</p>
-            </div>
-
-            <!-- Hero Phone Preview -->
-            <div class="flex justify-center animate-in" style="animation-delay: 0.2s;">
-                <div class="phone-frame">
-                    <img src="images/IMG_4839.PNG" alt="Bookra App">
+                <!-- Right: Phone Screenshot -->
+                <div class="flex justify-center animate-in" style="animation-delay: 0.2s;">
+                    <div class="phone-frame">
+                        <img src="images/IMG_4839.PNG" alt="Bookra App Library">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Grid -->
-    <section id="features" class="py-20 px-6 bg-gray-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 animate-in">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="features.title">五大核心功能</h2>
-                <p class="text-xl text-gray-600" data-i18n="features.subtitle">用 AI 重新定义阅读体验</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <!-- Feature 1: Batch Scanning -->
-                <div class="feature-card bg-gradient-to-br from-blue-50 to-cyan-50 p-8">
-                    <div class="flex flex-col h-full">
-                        <div class="badge bg-blue-100 text-blue-700 mb-6">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            </svg>
-                            <span data-i18n="feature1.badge">批量扫描</span>
-                        </div>
-
-                        <h3 class="text-3xl font-bold mb-4" data-i18n="feature1.title">拍张照，整个书架瞬间入库</h3>
-                        <p class="text-lg text-gray-700 mb-6 flex-grow" data-i18n="feature1.description">对准书架拍一张照片，AI 自动识别所有书脊，一次添加多本书籍。</p>
-
-                        <div class="flex justify-center mt-4">
-                            <div class="phone-frame">
-                                <img src="images/IMG_4901.PNG" alt="Batch Scanning">
-                            </div>
-                        </div>
+    <!-- Feature 1: Batch Scanning - Left Image, Right Text -->
+    <section id="features" class="full-section bg-feature-1">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left: Phone Screenshot -->
+                <div class="flex justify-center md:justify-end order-2 md:order-1">
+                    <div class="phone-frame">
+                        <img src="images/IMG_4901.PNG" alt="Batch Scanning">
                     </div>
                 </div>
 
-                <!-- Feature 2: AI X-Ray -->
-                <div class="feature-card bg-gradient-to-br from-purple-50 to-pink-50 p-8">
-                    <div class="flex flex-col h-full">
-                        <div class="badge bg-purple-100 text-purple-700 mb-6">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                            <span data-i18n="feature2.badge">AI 分析</span>
-                        </div>
-
-                        <h3 class="text-3xl font-bold mb-4" data-i18n="feature2.title">深入骨髓的理解</h3>
-                        <p class="text-lg text-gray-700 mb-6 flex-grow" data-i18n="feature2.description">AI X-Ray 从骨架、解剖、灵魂三个维度透视每本书的核心。</p>
-
-                        <div class="flex justify-center mt-4">
-                            <div class="phone-frame">
-                                <img src="images/IMG_4855.PNG" alt="AI X-Ray">
-                            </div>
-                        </div>
+                <!-- Right: Text Content -->
+                <div class="order-1 md:order-2">
+                    <div class="badge bg-blue-100 text-blue-700 mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span data-i18n="feature1.badge">01 / 批量扫描</span>
                     </div>
-                </div>
 
-                <!-- Feature 3: Mood Match -->
-                <div class="feature-card bg-gradient-to-br from-amber-50 to-orange-50 p-8">
-                    <div class="flex flex-col h-full">
-                        <div class="badge bg-amber-100 text-amber-700 mb-6">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-                            <span data-i18n="feature3.badge">心情匹配</span>
-                        </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="feature1.title">
+                        拍张照，整个书架<br>瞬间入库
+                    </h2>
 
-                        <h3 class="text-3xl font-bold mb-4" data-i18n="feature3.title">此刻最适合读哪本书？</h3>
-                        <p class="text-lg text-gray-700 mb-6 flex-grow" data-i18n="feature3.description">描述你的心情，AI 就能从书架中找到最能共鸣的书籍。</p>
+                    <p class="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed" data-i18n="feature1.description">
+                        不用一本本扫描。对准书架拍一张照片，AI 自动识别所有书脊，一次添加多本书籍。
+                    </p>
 
-                        <div class="flex justify-center mt-4">
-                            <div class="phone-frame">
-                                <img src="images/IMG_4844.PNG" alt="Mood Match">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature 4: Reading Path -->
-                <div class="feature-card bg-gradient-to-br from-green-50 to-emerald-50 p-8">
-                    <div class="flex flex-col h-full">
-                        <div class="badge bg-green-100 text-green-700 mb-6">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
-                            </svg>
-                            <span data-i18n="feature4.badge">学习路径</span>
-                        </div>
-
-                        <h3 class="text-3xl font-bold mb-4" data-i18n="feature4.title">从入门到精通一次规划</h3>
-                        <p class="text-lg text-gray-700 mb-6 flex-grow" data-i18n="feature4.description">告诉 AI 你想学什么主题，它会规划出循序渐进的学习路径。</p>
-
-                        <div class="flex justify-center mt-4">
-                            <div class="phone-frame">
-                                <img src="images/IMG_4846.PNG" alt="Reading Path">
-                            </div>
-                        </div>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl">
+                        <p class="text-base text-gray-700" data-i18n="feature1.limits">
+                            <strong>30本书</strong> → 免费用户<br>
+                            <strong>无限书籍</strong> → Pro 会员
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Feature 5: Quote Cards (Full Width) -->
-            <div class="mt-8">
-                <div class="feature-card bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 p-8 md:p-12">
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div class="badge bg-rose-100 text-rose-700 mb-6">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
-                                </svg>
-                                <span data-i18n="feature5.badge">金句卡片</span>
+    <!-- Feature 2: AI X-Ray - Right Image, Left Text -->
+    <section class="full-section bg-feature-2">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left: Text Content -->
+                <div>
+                    <div class="badge bg-purple-100 text-purple-700 mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        <span data-i18n="feature2.badge">02 / AI 深度分析</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="feature2.title">
+                        深入骨髓的<br>理解
+                    </h2>
+
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed" data-i18n="feature2.description">
+                        AI X-Ray 从三个维度透视每本书：骨架（核心论点）、解剖（论证逻辑）、灵魂（跨域应用）
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                                <span class="text-2xl">🎯</span>
                             </div>
-
-                            <h3 class="text-4xl font-bold mb-4" data-i18n="feature5.title">值得珍藏的文字之美</h3>
-                            <p class="text-lg text-gray-700 mb-6" data-i18n="feature5.description">每一句触动心灵的文字，都可以生成精美的卡片。10种配色任选，保存分享，让美好永存。</p>
-
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="h-20 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-medium">暗夜诗意</div>
-                                <div class="h-20 rounded-xl bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center text-gray-800 font-medium">暖米色系</div>
-                                <div class="h-20 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-medium">森林绿意</div>
-                                <div class="h-20 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-medium">梦幻渐变</div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1" data-i18n="feature2.point1.title">核心公式</h4>
+                                <p class="text-gray-600" data-i18n="feature2.point1.desc">提炼全书最重要的思想框架</p>
                             </div>
                         </div>
 
-                        <div class="flex justify-center">
-                            <div class="phone-frame">
-                                <img src="images/IMG_4841.PNG" alt="Quote Cards">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                                <span class="text-2xl">🔍</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1" data-i18n="feature2.point2.title">论证逻辑</h4>
+                                <p class="text-gray-600" data-i18n="feature2.point2.desc">分析最强论据和潜在局限</p>
                             </div>
                         </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
+                                <span class="text-2xl">✨</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1" data-i18n="feature2.point3.title">行动指南</h4>
+                                <p class="text-gray-600" data-i18n="feature2.point3.desc">一句话总结 + 跨领域应用</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Phone Screenshot -->
+                <div class="flex justify-center md:justify-start">
+                    <div class="phone-frame">
+                        <img src="images/IMG_4855.PNG" alt="AI X-Ray Analysis">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 3: Mood Match - Left Image, Right Text -->
+    <section class="full-section bg-feature-3">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left: Phone Screenshot -->
+                <div class="flex justify-center md:justify-end order-2 md:order-1">
+                    <div class="phone-frame">
+                        <img src="images/IMG_4844.PNG" alt="Mood Match">
+                    </div>
+                </div>
+
+                <!-- Right: Text Content -->
+                <div class="order-1 md:order-2">
+                    <div class="badge bg-amber-100 text-amber-700 mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                        <span data-i18n="feature3.badge">03 / 心情匹配</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="feature3.title">
+                        此刻的心情<br>最适合读哪本书？
+                    </h2>
+
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed" data-i18n="feature3.description">
+                        只需描述你的心情，AI 就能从你的书架中找到最能共鸣的书籍，并解释为什么它们适合你。
+                    </p>
+
+                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-2xl border border-amber-200">
+                        <p class="text-base text-gray-700 italic mb-3" data-i18n="feature3.example.input">
+                            "想要放松，但不要太轻松..."
+                        </p>
+                        <p class="font-semibold text-xl mb-2" style="color: #E07830;" data-i18n="feature3.example.result">
+                            → 《小王子》90% 匹配
+                        </p>
+                        <p class="text-sm text-gray-600" data-i18n="feature3.example.reason">
+                            这本书能帮你放松心情，提供不同角度的启发...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4: Reading Path - Right Image, Left Text -->
+    <section class="full-section bg-feature-4">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left: Text Content -->
+                <div>
+                    <div class="badge bg-green-100 text-green-700 mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        <span data-i18n="feature4.badge">04 / 学习路径</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="feature4.title">
+                        从入门到精通<br>一次规划
+                    </h2>
+
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed" data-i18n="feature4.description">
+                        告诉 AI 你想学什么主题，它会从你的书架中规划出一条循序渐进的学习路径。
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                                1
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg" data-i18n="feature4.step1.title">心理学与生活</h4>
+                                <p class="text-sm text-gray-600" data-i18n="feature4.step1.time">第1周 · 基础入门</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                                2
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg" data-i18n="feature4.step2.title">小王子</h4>
+                                <p class="text-sm text-gray-600" data-i18n="feature4.step2.time">第2周 · 心理哲学</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-lg" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                                3
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg" data-i18n="feature4.step3.title">存在的瞬间</h4>
+                                <p class="text-sm text-gray-600" data-i18n="feature4.step3.time">第3周 · 应用实践</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Phone Screenshot -->
+                <div class="flex justify-center md:justify-start">
+                    <div class="phone-frame">
+                        <img src="images/IMG_4846.PNG" alt="Reading Path">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 5: Quote Cards - Left Image, Right Text -->
+    <section class="full-section bg-feature-5">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left: Phone Screenshot -->
+                <div class="flex justify-center md:justify-end order-2 md:order-1">
+                    <div class="phone-frame">
+                        <img src="images/IMG_4841.PNG" alt="Quote Cards">
+                    </div>
+                </div>
+
+                <!-- Right: Text Content -->
+                <div class="order-1 md:order-2">
+                    <div class="badge bg-rose-100 text-rose-700 mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                        </svg>
+                        <span data-i18n="feature5.badge">05 / 金句卡片</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="feature5.title">
+                        值得珍藏的<br>文字之美
+                    </h2>
+
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed" data-i18n="feature5.description">
+                        每一句触动心灵的文字，都可以生成精美的卡片。10种配色任选，保存分享，让美好永存。
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="h-24 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-medium shadow-lg">
+                            <span data-i18n="feature5.palette1">暗夜诗意</span>
+                        </div>
+                        <div class="h-24 rounded-xl bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center text-gray-800 font-medium shadow-lg">
+                            <span data-i18n="feature5.palette2">暖米色系</span>
+                        </div>
+                        <div class="h-24 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-medium shadow-lg">
+                            <span data-i18n="feature5.palette3">森林绿意</span>
+                        </div>
+                        <div class="h-24 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-medium shadow-lg">
+                            <span data-i18n="feature5.palette4">梦幻渐变</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-gray-600">
+                        <p data-i18n="feature5.features">💾 保存到相册 • 📤 分享给朋友 • 🎨 10种精选配色</p>
                     </div>
                 </div>
             </div>
@@ -341,8 +498,8 @@
     </section>
 
     <!-- CTA Section -->
-    <section id="download" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center animate-in">
+    <section id="download" class="full-section bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-5xl md:text-6xl font-bold mb-6" data-i18n="cta.title">开始你的智慧阅读之旅</h2>
             <p class="text-xl text-gray-600 mb-10" data-i18n="cta.subtitle">用 AI 重新发现读书的乐趣</p>
 
@@ -423,23 +580,42 @@
                 'hero.subtitle': '让 AI 带你发现书中的深层智慧',
                 'hero.cta': '在 App Store 下载',
                 'hero.offer': '免费试用 · 30本书籍 · 5次AI灵感/月',
-                'features.title': '五大核心功能',
-                'features.subtitle': '用 AI 重新定义阅读体验',
-                'feature1.badge': '批量扫描',
-                'feature1.title': '拍张照，整个书架瞬间入库',
-                'feature1.description': '对准书架拍一张照片，AI 自动识别所有书脊，一次添加多本书籍。',
-                'feature2.badge': 'AI 分析',
-                'feature2.title': '深入骨髓的理解',
-                'feature2.description': 'AI X-Ray 从骨架、解剖、灵魂三个维度透视每本书的核心。',
-                'feature3.badge': '心情匹配',
-                'feature3.title': '此刻最适合读哪本书？',
-                'feature3.description': '描述你的心情，AI 就能从书架中找到最能共鸣的书籍。',
-                'feature4.badge': '学习路径',
-                'feature4.title': '从入门到精通一次规划',
-                'feature4.description': '告诉 AI 你想学什么主题，它会规划出循序渐进的学习路径。',
-                'feature5.badge': '金句卡片',
-                'feature5.title': '值得珍藏的文字之美',
+                'feature1.badge': '01 / 批量扫描',
+                'feature1.title': '拍张照，整个书架<br>瞬间入库',
+                'feature1.description': '不用一本本扫描。对准书架拍一张照片，AI 自动识别所有书脊，一次添加多本书籍。',
+                'feature1.limits': '<strong>30本书</strong> → 免费用户<br><strong>无限书籍</strong> → Pro 会员',
+                'feature2.badge': '02 / AI 深度分析',
+                'feature2.title': '深入骨髓的<br>理解',
+                'feature2.description': 'AI X-Ray 从三个维度透视每本书：骨架（核心论点）、解剖（论证逻辑）、灵魂（跨域应用）',
+                'feature2.point1.title': '核心公式',
+                'feature2.point1.desc': '提炼全书最重要的思想框架',
+                'feature2.point2.title': '论证逻辑',
+                'feature2.point2.desc': '分析最强论据和潜在局限',
+                'feature2.point3.title': '行动指南',
+                'feature2.point3.desc': '一句话总结 + 跨领域应用',
+                'feature3.badge': '03 / 心情匹配',
+                'feature3.title': '此刻的心情<br>最适合读哪本书？',
+                'feature3.description': '只需描述你的心情，AI 就能从你的书架中找到最能共鸣的书籍，并解释为什么它们适合你。',
+                'feature3.example.input': '"想要放松，但不要太轻松..."',
+                'feature3.example.result': '→ 《小王子》90% 匹配',
+                'feature3.example.reason': '这本书能帮你放松心情，提供不同角度的启发...',
+                'feature4.badge': '04 / 学习路径',
+                'feature4.title': '从入门到精通<br>一次规划',
+                'feature4.description': '告诉 AI 你想学什么主题，它会从你的书架中规划出一条循序渐进的学习路径。',
+                'feature4.step1.title': '心理学与生活',
+                'feature4.step1.time': '第1周 · 基础入门',
+                'feature4.step2.title': '小王子',
+                'feature4.step2.time': '第2周 · 心理哲学',
+                'feature4.step3.title': '存在的瞬间',
+                'feature4.step3.time': '第3周 · 应用实践',
+                'feature5.badge': '05 / 金句卡片',
+                'feature5.title': '值得珍藏的<br>文字之美',
                 'feature5.description': '每一句触动心灵的文字，都可以生成精美的卡片。10种配色任选，保存分享，让美好永存。',
+                'feature5.palette1': '暗夜诗意',
+                'feature5.palette2': '暖米色系',
+                'feature5.palette3': '森林绿意',
+                'feature5.palette4': '梦幻渐变',
+                'feature5.features': '💾 保存到相册 • 📤 分享给朋友 • 🎨 10种精选配色',
                 'cta.title': '开始你的智慧阅读之旅',
                 'cta.subtitle': '用 AI 重新发现读书的乐趣',
                 'cta.download': '在 App Store 下载',
@@ -469,23 +645,42 @@
                 'hero.subtitle': 'Discover Deep Insights with AI',
                 'hero.cta': 'Download on App Store',
                 'hero.offer': 'Free Trial · 30 Books · 5 AI Insights/Month',
-                'features.title': 'Five Core Features',
-                'features.subtitle': 'Redefining Reading with AI',
-                'feature1.badge': 'Batch Scanning',
-                'feature1.title': 'Snap & Add Your Entire Bookshelf',
-                'feature1.description': 'Take a photo of your bookshelf, AI recognizes all book spines and adds multiple books at once.',
-                'feature2.badge': 'AI Analysis',
-                'feature2.title': 'Deep Understanding',
-                'feature2.description': 'AI X-Ray analyzes books from three dimensions: Skeleton, Dissection, and Soul.',
-                'feature3.badge': 'Mood Match',
-                'feature3.title': 'What Should You Read Now?',
-                'feature3.description': 'Describe your mood, and AI finds the most resonating books from your library.',
-                'feature4.badge': 'Learning Path',
-                'feature4.title': 'From Beginner to Expert',
-                'feature4.description': 'Tell AI what you want to learn, and it creates a progressive learning path.',
-                'feature5.badge': 'Quote Cards',
-                'feature5.title': 'Beautiful Words Worth Keeping',
-                'feature5.description': 'Transform inspiring quotes into stunning cards. Choose from 10 color palettes, save and share.',
+                'feature1.badge': '01 / BATCH SCANNING',
+                'feature1.title': 'Snap a Photo<br>Add Your Bookshelf',
+                'feature1.description': 'No need to scan one by one. Just take a photo of your bookshelf, and AI recognizes all book spines to add multiple books at once.',
+                'feature1.limits': '<strong>30 books</strong> → Free users<br><strong>Unlimited books</strong> → Pro members',
+                'feature2.badge': '02 / AI ANALYSIS',
+                'feature2.title': 'Deep<br>Understanding',
+                'feature2.description': 'AI X-Ray analyzes books from three dimensions: Skeleton (core thesis), Dissection (logic), Soul (applications)',
+                'feature2.point1.title': 'Core Formula',
+                'feature2.point1.desc': 'Extract the most important framework',
+                'feature2.point2.title': 'Logic Analysis',
+                'feature2.point2.desc': 'Analyze arguments and limitations',
+                'feature2.point3.title': 'Action Guide',
+                'feature2.point3.desc': 'One-sentence takeaway + applications',
+                'feature3.badge': '03 / MOOD MATCH',
+                'feature3.title': 'What Should<br>You Read Now?',
+                'feature3.description': 'Simply describe your mood, and AI finds the books that resonate most from your library, explaining why they\'re perfect for you.',
+                'feature3.example.input': '"Want to relax, but not too much..."',
+                'feature3.example.result': '→ "The Little Prince" 90% Match',
+                'feature3.example.reason': 'This book helps you relax while offering perspectives...',
+                'feature4.badge': '04 / LEARNING PATH',
+                'feature4.title': 'From Beginner<br>to Expert',
+                'feature4.description': 'Tell AI what topic you want to learn, and it creates a progressive learning path from your bookshelf.',
+                'feature4.step1.title': 'Psychology & Life',
+                'feature4.step1.time': 'Week 1 · Foundation',
+                'feature4.step2.title': 'The Little Prince',
+                'feature4.step2.time': 'Week 2 · Philosophy',
+                'feature4.step3.title': 'The Power of Now',
+                'feature4.step3.time': 'Week 3 · Practice',
+                'feature5.badge': '05 / QUOTE CARDS',
+                'feature5.title': 'Beautiful Words<br>Worth Keeping',
+                'feature5.description': 'Transform inspiring quotes into stunning cards. Choose from 10 color palettes, save and share with one tap.',
+                'feature5.palette1': 'Midnight Poetry',
+                'feature5.palette2': 'Warm Beige',
+                'feature5.palette3': 'Forest Green',
+                'feature5.palette4': 'Dream Gradient',
+                'feature5.features': '💾 Save to Photos • 📤 Share with Friends • 🎨 10 Color Palettes',
                 'cta.title': 'Start Your Reading Journey',
                 'cta.subtitle': 'Rediscover the Joy of Reading with AI',
                 'cta.download': 'Download Now',
