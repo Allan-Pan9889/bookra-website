@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Bookra</title>
+    <meta name="description" content="Get help with Bookra. Find answers to common questions and contact our support team.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FAF7F3',
+                            100: '#F4E8D8',
+                            200: '#E9DCC9',
+                            300: '#DEC9B0',
+                            400: '#D4B697',
+                        },
+                        accent: '#E07830',
+                        'accent-dark': '#C56524',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FAF7F3 0%, #F4E8D8 50%, #E9DCC9 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="glass-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-800">Bookra</span>
+                </a>
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-accent transition-colors">Home</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-accent transition-colors">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6">How Can We Help?</h1>
+            <p class="text-xl text-gray-700 mb-8">Find answers to common questions or get in touch with our support team</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">How do I scan books into my library?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Tap the "+" button in your library, then choose "Scan Books". Point your camera at your book spines and Bookra will automatically recognize them. For best results, ensure good lighting and hold your phone steady. You can scan multiple books at once!
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">What is AI X-Ray Analysis?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        AI X-Ray is our signature feature that analyzes books through three dimensions:
+                        <br><br>
+                        <strong>Skeleton:</strong> The book's structure, key concepts, and framework
+                        <br>
+                        <strong>Dissection:</strong> Deeper themes, arguments, and interconnected ideas
+                        <br>
+                        <strong>Soul:</strong> The emotional core, author's intent, and philosophical essence
+                        <br><br>
+                        This helps you understand books at multiple levels and discover connections you might miss.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">How accurate is the book scanning?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Our scanning technology uses advanced OCR and AI to recognize book spines with high accuracy. If a book isn't recognized automatically, you can:
+                        <br>• Scan the ISBN barcode for instant lookup
+                        <br>• Manually search by title
+                        <br>• Take a photo of the cover
+                        <br><br>
+                        The system improves over time as you scan more books.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Do I need an internet connection?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Basic library management works offline, but AI-powered features (X-Ray Analysis, Mood Recommendations, Themed Paths) require an internet connection. Once generated, AI insights are saved locally and can be viewed offline.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">What's the difference between Individual and Family subscriptions?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong>Individual ($2.99/month or $28.99/year):</strong>
+                        <br>• Full access to all AI features
+                        <br>• Unlimited X-Ray Analysis
+                        <br>• Unlimited mood recommendations
+                        <br>• Unlimited themed reading paths
+                        <br><br>
+                        <strong>Family ($4.99/month or $48.99/year):</strong>
+                        <br>• Everything in Individual
+                        <br>• Share with up to 5 family members
+                        <br>• Separate libraries for each member
+                        <br>• Family sharing through Apple Family Sharing
+                    </p>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">How do mood-based recommendations work?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Our AI analyzes your library and matches books to emotional states. When you select a mood (like "contemplative", "energizing", or "comforting"), the AI considers:
+                        <br>• Book themes and tone
+                        <br>• Your reading history
+                        <br>• Emotional patterns in the content
+                        <br>• Writing style and pacing
+                        <br><br>
+                        This helps you find the perfect book for your current mindset.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Can I export my library data?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Yes! Go to Settings > Data & Privacy > Export Library. You can export your:
+                        <br>• Book list (CSV format)
+                        <br>• Reading notes and highlights
+                        <br>• AI-generated insights
+                        <br>• Quote cards (images)
+                        <br><br>
+                        All data remains private and is never shared with third parties.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Why is AI analysis taking a long time?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        AI analysis typically takes 30-90 seconds per book. Factors that affect speed:
+                        <br>• Internet connection speed
+                        <br>• Book complexity and length
+                        <br>• Server load
+                        <br><br>
+                        You can continue using the app while analysis runs in the background. You'll receive a notification when it's complete.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Is my reading data private?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Absolutely. We take privacy seriously:
+                        <br>• All data is encrypted in transit and at rest
+                        <br>• We never sell or share your data
+                        <br>• You can delete your account and all data anytime
+                        <br>• AI processing happens securely on our servers
+                        <br><br>
+                        Read our full <a href="privacy.html" class="text-accent hover:underline">Privacy Policy</a> for details.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">How do I cancel my subscription?</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Subscriptions are managed through Apple:
+                        <br>1. Open Settings on your iPhone
+                        <br>2. Tap your name at the top
+                        <br>3. Tap "Subscriptions"
+                        <br>4. Select "Bookra"
+                        <br>5. Tap "Cancel Subscription"
+                        <br><br>
+                        You'll retain access until the end of your billing period.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-12 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Still Need Help?</h2>
+                <p class="text-gray-700 mb-8 max-w-2xl mx-auto">
+                    Can't find the answer you're looking for? Our support team is here to help.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    <a href="mailto:support@bookara.im" class="flex items-center justify-center space-x-3 p-6 bg-white rounded-xl hover:bg-beige-100 transition-colors cursor-pointer">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900">Email Support</p>
+                            <p class="text-sm text-gray-600">support@bookara.im</p>
+                        </div>
+                    </a>
+
+                    <a href="https://twitter.com/bookra_app" target="_blank" class="flex items-center justify-center space-x-3 p-6 bg-white rounded-xl hover:bg-beige-100 transition-colors cursor-pointer">
+                        <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                        </svg>
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900">Follow Us</p>
+                            <p class="text-sm text-gray-600">@bookra_app</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <p class="text-sm text-gray-600">
+                        We typically respond within 24 hours on business days.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <span class="text-xl font-bold text-gray-800">Bookra</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">AI-powered reading companion</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#features" class="text-gray-600 hover:text-accent transition-colors">Features</a></li>
+                        <li><a href="index.html#how-it-works" class="text-gray-600 hover:text-accent transition-colors">How It Works</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="support.html" class="text-gray-600 hover:text-accent transition-colors">Help Center</a></li>
+                        <li><a href="#contact" class="text-gray-600 hover:text-accent transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="privacy.html" class="text-gray-600 hover:text-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="privacy.html#terms" class="text-gray-600 hover:text-accent transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-600 text-sm">© 2025 Bookra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
