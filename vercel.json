@@ -12,6 +12,10 @@
     {
       "src": "/privacy",
       "dest": "/privacy.html"
+    },
+    {
+      "src": "/terms",
+      "dest": "/privacy.html#terms"
     }
   ],
   "headers": [
