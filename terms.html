@@ -3,25 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=privacy.html#terms">
     <title>Terms of Service - Bookra</title>
+    <meta name="description" content="Bookra Terms of Service - Legal agreement for using the Bookra app.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-        // JavaScript redirect as backup
-        window.location.href = 'privacy.html#terms';
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FAF7F3',
+                            100: '#F4E8D8',
+                            200: '#E9DCC9',
+                            300: '#DEC9B0',
+                            400: '#D4B697',
+                        },
+                        accent: '#E07830',
+                        'accent-dark': '#C56524',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
     </script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FAF7F3 0%, #F4E8D8 50%, #E9DCC9 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+        .prose ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            list-style-type: disc;
+        }
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+        .prose strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+    </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVLWTRT3SB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-ZVLWTRT3SB');
     </script>
-
 </head>
-<body>
-    <p>Redirecting to Terms of Service...</p>
-    <p>If you are not redirected automatically, <a href="privacy.html#terms">click here</a>.</p>
+<body class="gradient-bg min-h-screen">
+    <!-- Header -->
+    <header class="py-6">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-800">Bookra</span>
+                </a>
+                <nav class="flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-accent transition-colors">Home</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-accent transition-colors">Privacy</a>
+                    <a href="terms.html" class="text-accent font-medium">Terms</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="glass-card rounded-2xl p-8 md:p-12 shadow-xl">
+            <h1 class="text-4xl font-bold mb-4 text-gray-800">Terms of Service</h1>
+            <p class="text-gray-600 mb-8">
+                <strong>Effective Date:</strong> February 1, 2026<br>
+                <strong>Last Updated:</strong> February 1, 2026
+            </p>
+
+            <div class="prose max-w-none text-gray-700">
+                <p>Welcome to Bookra (the "App"). These Terms of Service ("Terms") constitute a legal agreement between you and the Bookra development team ("we," "us," or "our") regarding your use of the App.</p>
+
+                <h2>1. Acceptance of Terms</h2>
+                <p>By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree to any part of these Terms, please do not use the App.</p>
+
+                <h2>2. Service Description</h2>
+                <p>Bookra is a personal book management application that provides:</p>
+                <ul>
+                    <li>Book scanning and entry</li>
+                    <li>Reading progress tracking</li>
+                    <li>AI-assisted reading insights</li>
+                    <li>Book information management</li>
+                    <li>Data backup and restore (paid feature)</li>
+                </ul>
+
+                <h2>3. User Accounts</h2>
+                <h3>3.1 Account Registration</h3>
+                <ul>
+                    <li>You must provide a valid email address to register an account</li>
+                    <li>You are responsible for maintaining the security of your account, including password confidentiality</li>
+                    <li>You are responsible for all activities under your account</li>
+                </ul>
+
+                <h3>3.2 Account Usage</h3>
+                <ul>
+                    <li>You must be at least 13 years old to use the App</li>
+                    <li>Each user may only register one account</li>
+                    <li>Selling, transferring, or sharing account access is prohibited</li>
+                </ul>
+
+                <h2>4. Subscription Services</h2>
+                <h3>4.1 Subscription Plans</h3>
+                <p>The App offers the following subscription plans:</p>
+                <ul>
+                    <li><strong>Free:</strong> Basic features with usage limits</li>
+                    <li><strong>Pro:</strong> Unlocks all features</li>
+                    <li><strong>Family:</strong> Supports up to 6 people sharing (via Apple Family Sharing)</li>
+                </ul>
+
+                <h3>4.2 Payment and Renewal</h3>
+                <ul>
+                    <li>All subscriptions are processed through the Apple App Store</li>
+                    <li>Subscriptions auto-renew unless canceled at least 24 hours before the end of the current period</li>
+                    <li>You can manage and cancel subscriptions in your Apple ID account settings</li>
+                </ul>
+
+                <h3>4.3 Refund Policy</h3>
+                <ul>
+                    <li>Refund requests should be processed through the Apple App Store</li>
+                    <li>We follow Apple's refund policy</li>
+                </ul>
+
+                <h3>4.4 Free Trials</h3>
+                <ul>
+                    <li>Some subscription plans offer free trial periods</li>
+                    <li>After the trial ends, charges begin automatically unless canceled</li>
+                    <li>Each Apple ID is eligible for one free trial only</li>
+                </ul>
+
+                <h3>4.5 Price Changes</h3>
+                <ul>
+                    <li>We reserve the right to adjust subscription prices</li>
+                    <li>Price changes will be notified in advance and take effect in the next renewal period</li>
+                </ul>
+
+                <h2>5. User Content</h2>
+                <h3>5.1 Your Content</h3>
+                <ul>
+                    <li>You retain ownership of all book information, notes, and other content you add to the App</li>
+                    <li>You grant us permission to store and process your content to provide the service</li>
+                </ul>
+
+                <h3>5.2 Content Responsibility</h3>
+                <ul>
+                    <li>You are solely responsible for content you upload</li>
+                    <li>Uploading content that infringes others' intellectual property rights is prohibited</li>
+                    <li>Uploading illegal, harmful, or inappropriate content is prohibited</li>
+                </ul>
+
+                <h2>6. AI Features</h2>
+                <h3>6.1 AI-Generated Content</h3>
+                <ul>
+                    <li>The App uses AI technology to generate reading insights and recommendations</li>
+                    <li>AI-generated content is for reference only and does not constitute professional advice</li>
+                    <li>We do not guarantee the accuracy or completeness of AI-generated content</li>
+                </ul>
+
+                <h3>6.2 Usage Limits</h3>
+                <ul>
+                    <li>Free users have monthly AI feature usage limits</li>
+                    <li>Abusing AI features or attempting to circumvent usage limits is prohibited</li>
+                </ul>
+
+                <h2>7. Intellectual Property</h2>
+                <h3>7.1 App Copyright</h3>
+                <ul>
+                    <li>The App and all its components (including but not limited to code, design, icons) are our intellectual property</li>
+                    <li>Copying, modifying, distributing, or reverse engineering the App without authorization is prohibited</li>
+                </ul>
+
+                <h3>7.2 Third-Party Content</h3>
+                <ul>
+                    <li>Book information may come from third-party data sources</li>
+                    <li>Book cover image copyrights belong to their respective authors or publishers</li>
+                </ul>
+
+                <h2>8. Prohibited Activities</h2>
+                <p>When using the App, you must not:</p>
+                <ul>
+                    <li>Violate any applicable laws or regulations</li>
+                    <li>Infringe on others' intellectual property or privacy rights</li>
+                    <li>Spread malware or conduct security attacks</li>
+                    <li>Attempt unauthorized access to systems or data</li>
+                    <li>Interfere with the normal operation of the App</li>
+                    <li>Use automated tools for bulk operations</li>
+                </ul>
+
+                <h2>9. Service Changes and Termination</h2>
+                <h3>9.1 Service Changes</h3>
+                <ul>
+                    <li>We reserve the right to modify, suspend, or terminate the service at any time</li>
+                    <li>Significant changes will be notified to users in advance</li>
+                </ul>
+
+                <h3>9.2 Account Termination</h3>
+                <ul>
+                    <li>If you violate these Terms, we may suspend or terminate your account</li>
+                    <li>You may delete your account at any time; related data will be deleted</li>
+                </ul>
+
+                <h2>10. Disclaimers</h2>
+                <h3>10.1 Service Availability</h3>
+                <ul>
+                    <li>The App is provided "as is" without any express or implied warranties</li>
+                    <li>We do not guarantee uninterrupted or error-free service</li>
+                </ul>
+
+                <h3>10.2 Limitation of Liability</h3>
+                <ul>
+                    <li>To the maximum extent permitted by law, we are not liable for any indirect, incidental, special, or consequential damages</li>
+                    <li>Our total liability shall not exceed the subscription fees you paid in the past 12 months</li>
+                </ul>
+
+                <h2>11. Dispute Resolution</h2>
+                <h3>11.1 Governing Law</h3>
+                <ul>
+                    <li>These Terms are governed by the laws of your country or region of residence</li>
+                    <li>For users in the European Economic Area (EEA), you benefit from mandatory consumer protection laws in your country</li>
+                    <li>Nothing in these Terms affects your rights as a consumer under applicable local law</li>
+                </ul>
+
+                <h3>11.2 Dispute Resolution Process</h3>
+                <ul>
+                    <li>Any disputes should first be resolved through friendly negotiation</li>
+                    <li>If negotiation fails, you may seek resolution through:
+                        <ul>
+                            <li>Your local consumer protection authority</li>
+                            <li>Small claims court in your jurisdiction</li>
+                            <li>Any other competent court in your jurisdiction</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>11.3 EU Users</h3>
+                <ul>
+                    <li>EU users may use the EU Online Dispute Resolution platform: <a href="https://ec.europa.eu/consumers/odr" class="text-accent hover:underline" target="_blank">https://ec.europa.eu/consumers/odr</a></li>
+                    <li>You may also file complaints with your local consumer protection authority</li>
+                </ul>
+
+                <h2>12. Modifications to Terms</h2>
+                <ul>
+                    <li>We may update these Terms from time to time</li>
+                    <li>Modified Terms will be published in the App</li>
+                    <li>Continued use of the App constitutes acceptance of the modified Terms</li>
+                </ul>
+
+                <h2>13. Contact Us</h2>
+                <p>If you have any questions or feedback, please contact us:</p>
+                <p><strong>Email:</strong> <a href="mailto:panguodong@gmail.com" class="text-accent hover:underline">panguodong@gmail.com</a></p>
+
+                <h2>14. Miscellaneous</h2>
+                <h3>14.1 Entire Agreement</h3>
+                <p>These Terms constitute the entire agreement between you and us regarding the App.</p>
+
+                <h3>14.2 Severability</h3>
+                <p>If any part of these Terms is found invalid, the remaining parts remain in effect.</p>
+
+                <h3>14.3 Waiver</h3>
+                <p>Our failure to enforce any right under these Terms does not constitute a waiver of that right.</p>
+
+                <hr class="my-8 border-gray-300">
+
+                <p class="text-center text-gray-600">&copy; 2026 Bookra. All rights reserved.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 mt-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-gray-600 text-sm">
+                    &copy; 2026 Bookra. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="privacy.html" class="text-gray-600 hover:text-accent transition-colors text-sm">Privacy Policy</a>
+                    <a href="terms.html" class="text-gray-600 hover:text-accent transition-colors text-sm">Terms of Service</a>
+                    <a href="mailto:panguodong@gmail.com" class="text-gray-600 hover:text-accent transition-colors text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
