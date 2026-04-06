@@ -782,9 +782,10 @@
                 }
             });
 
-            // Update support, privacy, and pricing links based on language
+            // Update support, privacy, terms, and pricing links based on language
             const supportLinks = document.querySelectorAll('a[href*="support"]');
             const privacyLinks = document.querySelectorAll('a[href*="privacy"]');
+            const termsLinks = document.querySelectorAll('a[href*="terms"]');
             const pricingLinks = document.querySelectorAll('a[href*="pricing"]');
 
             supportLinks.forEach(link => {
@@ -800,6 +801,14 @@
                     link.href = link.href.includes('#') ? 'privacy-zh.html#' + link.href.split('#')[1] : 'privacy-zh.html';
                 } else {
                     link.href = link.href.includes('#') ? 'privacy.html#' + link.href.split('#')[1] : 'privacy.html';
+                }
+            });
+
+            termsLinks.forEach(link => {
+                if (lang === 'zh') {
+                    link.href = 'terms-zh.html';
+                } else {
+                    link.href = 'terms.html';
                 }
             });
 
