@@ -1,0 +1,8 @@
+# Bookra Website Robots.txt
+# https://bookra.im
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bookra.im/sitemap.xml

@@ -3,12 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookra - AI Reading Companion</title>
-    <meta name="description" content="每一本书都藏着一个世界，让AI带你发现书中的深层智慧">
+    <title>Bookra - AI Reading Companion | Smart Book Scanner & Analysis App for iOS</title>
+    <meta name="description" content="Bookra is your AI-powered reading companion. Scan your bookshelf, get deep book analysis with AI X-Ray, mood-based recommendations, and beautiful quote cards. Free for iOS.">
+    <meta name="keywords" content="AI reading app, AI book companion, book scanning app, AI book analysis, reading companion app, bookshelf scanner app iOS, AI reading recommendations, mood based book recommendations, book quote cards, reading tracker with AI, AI阅读应用, 书架扫描app, AI书籍分析, 智能阅读伴侣">
+
+    <!-- Canonical and Language Alternates -->
+    <link rel="canonical" href="https://bookra.im/">
+    <link rel="alternate" hreflang="en" href="https://bookra.im/">
+    <link rel="alternate" hreflang="zh" href="https://bookra.im/?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://bookra.im/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bookra.im/">
+    <meta property="og:title" content="Bookra - AI Reading Companion | Smart Book Scanner & Analysis App">
+    <meta property="og:description" content="Discover deep insights in every book with AI. Scan your bookshelf, get personalized recommendations, and create beautiful quote cards.">
+    <meta property="og:image" content="https://bookra.im/images/og-image.png">
+    <meta property="og:site_name" content="Bookra">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://bookra.im/">
+    <meta name="twitter:title" content="Bookra - AI Reading Companion | Smart Book Scanner & Analysis App">
+    <meta name="twitter:description" content="Discover deep insights in every book with AI. Scan your bookshelf, get personalized recommendations, and create beautiful quote cards.">
+    <meta name="twitter:image" content="https://bookra.im/images/og-image.png">
+    <meta name="twitter:creator" content="@guodong312">
+
+    <!-- Mobile & PWA -->
+    <meta name="theme-color" content="#E07830">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Bookra">
+    <link rel="apple-touch-icon" href="images/Bookra.png">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Bookra">
+    <meta name="application-name" content="Bookra">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Bookra",
+      "url": "https://bookra.im/",
+      "description": "AI-powered reading companion app for iOS",
+      "inLanguage": ["en", "zh"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bookra.im/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bookra",
+      "url": "https://bookra.im/",
+      "logo": "https://bookra.im/images/Bookra.png",
+      "sameAs": [
+        "https://twitter.com/guodong312"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@bookra.im",
+        "contactType": "customer support"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Bookra",
+      "operatingSystem": "iOS",
+      "applicationCategory": "EducationalApplication",
+      "description": "AI-powered reading companion that helps you scan books, get deep analysis, mood-based recommendations, and create beautiful quote cards.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "name": "Free",
+          "description": "30 books, 5 AI insights per month"
+        },
+        {
+          "@type": "Offer",
+          "price": "4.99",
+          "priceCurrency": "USD",
+          "name": "Individual",
+          "description": "Unlimited books and AI insights",
+          "priceValidUntil": "2026-12-31"
+        },
+        {
+          "@type": "Offer",
+          "price": "7.99",
+          "priceCurrency": "USD",
+          "name": "Family",
+          "description": "Share with up to 5 family members",
+          "priceValidUntil": "2026-12-31"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "156"
+      },
+      "featureList": [
+        "Batch bookshelf scanning",
+        "AI X-Ray deep book analysis",
+        "Mood-based book recommendations",
+        "Themed learning paths",
+        "Beautiful quote cards"
+      ],
+      "downloadUrl": "https://apps.apple.com/us/app/bookra-ai-reading-companion/id6760595154"
+    }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVLWTRT3SB"></script>
@@ -181,7 +301,7 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <img src="images/Bookra.png" alt="Bookra" class="h-14 w-auto">
+                    <img src="images/Bookra.png" alt="Bookra AI Reading Companion Logo" class="h-14 w-auto">
                 </div>
 
                 <!-- Desktop Nav -->
@@ -239,7 +359,7 @@
                 <!-- Right: Phone Screenshot -->
                 <div class="flex justify-center animate-in" style="animation-delay: 0.2s;">
                     <div class="phone-frame">
-                        <img data-img="hero" src="images/IMG_4839.PNG" alt="Bookra App Library">
+                        <img data-img="hero" src="images/IMG_4839.PNG" alt="Bookra app main library view showing book collection with AI insights">
                     </div>
                 </div>
             </div>
@@ -253,7 +373,7 @@
                 <!-- Left: Phone Screenshot -->
                 <div class="flex justify-center order-2 md:order-1">
                     <div class="phone-frame">
-                        <img data-img="scan" src="images/IMG_4901.PNG" alt="Batch Scanning">
+                        <img data-img="scan" src="images/IMG_4901.PNG" alt="Bookra batch book scanning feature - scan entire bookshelf at once">
                     </div>
                 </div>
 
@@ -349,7 +469,7 @@
                 <!-- Right: Phone Screenshot -->
                 <div class="flex justify-center">
                     <div class="phone-frame">
-                        <img data-img="xray" src="images/IMG_4855.PNG" alt="AI X-Ray Analysis">
+                        <img data-img="xray" src="images/IMG_4855.PNG" alt="Bookra AI X-Ray deep book analysis showing core insights">
                     </div>
                 </div>
             </div>
@@ -363,7 +483,7 @@
                 <!-- Left: Phone Screenshot -->
                 <div class="flex justify-center order-2 md:order-1">
                     <div class="phone-frame">
-                        <img data-img="mood" src="images/IMG_4844.PNG" alt="Mood Match">
+                        <img data-img="mood" src="images/IMG_4844.PNG" alt="Bookra mood-based book recommendations matching your current feeling">
                     </div>
                 </div>
 
@@ -457,7 +577,7 @@
                 <!-- Right: Phone Screenshot -->
                 <div class="flex justify-center">
                     <div class="phone-frame">
-                        <img data-img="path" src="images/IMG_4846.PNG" alt="Reading Path">
+                        <img data-img="path" src="images/IMG_4846.PNG" alt="Bookra AI-generated learning path for themed reading journey">
                     </div>
                 </div>
             </div>
@@ -471,7 +591,7 @@
                 <!-- Left: Phone Screenshot -->
                 <div class="flex justify-center order-2 md:order-1">
                     <div class="phone-frame">
-                        <img data-img="quote" src="images/IMG_4841.PNG" alt="Quote Cards">
+                        <img data-img="quote" src="images/IMG_4841.PNG" alt="Bookra beautiful quote cards generator for sharing book wisdom">
                     </div>
                 </div>
 
@@ -558,7 +678,7 @@
                 <!-- Brand -->
                 <div>
                     <div class="mb-4">
-                        <img src="images/Bookra.png" alt="Bookra" class="h-20 w-auto">
+                        <img src="images/Bookra.png" alt="Bookra AI Reading Companion Logo" class="h-20 w-auto">
                     </div>
                     <p class="text-sm text-gray-600" data-i18n="footer.tagline">AI 驱动的阅读伴侣</p>
                 </div>
