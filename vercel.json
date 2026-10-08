@@ -1,26 +1,181 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "routes": [
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": false,
+  "redirects": [
     {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bookra.im"
+        }
+      ],
+      "destination": "https://www.bookra.im/:path*",
+      "permanent": true
     },
     {
-      "src": "/support",
-      "dest": "/support.html"
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/en/",
+      "permanent": true
     },
     {
-      "src": "/privacy",
-      "dest": "/privacy.html"
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/en/",
+      "permanent": true
     },
     {
-      "src": "/terms",
-      "dest": "/privacy.html#terms"
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en",
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/en/index.html",
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/support.html",
+      "permanent": true
+    },
+    {
+      "source": "/support-zh",
+      "destination": "/support-zh.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-zh",
+      "destination": "/privacy-zh.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms-zh",
+      "destination": "/terms-zh.html",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing.html",
+      "permanent": true
+    },
+    {
+      "source": "/pricing-zh",
+      "destination": "/pricing-zh.html",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_4839.PNG",
+      "destination": "/assets/zh-hero-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_4901.PNG",
+      "destination": "/assets/zh-scan-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_4855.PNG",
+      "destination": "/assets/zh-xray-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_4844.PNG",
+      "destination": "/assets/zh-mood-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_4846.PNG",
+      "destination": "/assets/zh-path-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_4841.PNG",
+      "destination": "/assets/zh-quote-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_7262.PNG",
+      "destination": "/assets/en-hero-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_7252.PNG",
+      "destination": "/assets/en-scan-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_7266.PNG",
+      "destination": "/assets/en-xray-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_7123.PNG",
+      "destination": "/assets/en-mood-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_7125.PNG",
+      "destination": "/assets/en-path-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/IMG_7268.PNG",
+      "destination": "/assets/en-quote-640.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/Bookra.png",
+      "destination": "/assets/logo-256.webp",
+      "permanent": true
+    },
+    {
+      "source": "/images/og-image.png",
+      "destination": "/assets/og-image.jpg",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/en/",
+      "destination": "/en/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -29,10 +184,15 @@
         {
           "key": "X-Frame-Options",
           "value": "DENY"
-        },
+        }
+      ]
+    },
+    {
+      "source": "/assets/:path*",
+      "headers": [
         {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
         }
       ]
     }

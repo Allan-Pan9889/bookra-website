@@ -1,0 +1,29 @@
+@import "tailwindcss" source(none);
+@import "./fonts.css";
+@config "../tailwind.config.cjs";
+@source "../*.html";
+@source "../en/*.html";
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+.mobile-nav { position: static; margin-left: auto; margin-right: 12px; }
+.mobile-nav summary { cursor: pointer; padding: 8px 12px; font-size: 14px; font-weight: 600; border-radius: 8px; background: #f3f4f6; }
+.mobile-nav-panel { position: absolute; top: 100%; right: 16px; width: 240px; max-width: calc(100vw - 32px); padding: 8px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; box-shadow: 0 8px 30px #0002; z-index: 60; }
+.mobile-nav-link { display: block; padding: 12px; color: #374151; border-radius: 8px; }
+.mobile-nav-link:hover, .mobile-nav-link:focus-visible { background: #fff7ed; color: #c56524; }
+.language-link { margin-left: 12px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #e07830; outline-offset: 4px; }
+@media (min-width: 1024px) { .mobile-nav { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+.mobile-nav:not([open]) .mobile-nav-panel { display: none; }
+.grid > * { min-width: 0; }
+
+main a { overflow-wrap: anywhere; }
+footer li a { display: inline-flex; align-items: center; min-height: 32px; }
+.lang-switch, .language-link { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+.mobile-nav summary { min-height: 44px; }
+
+main > .full-section:first-of-type .animate-in { animation: none; opacity: 1; transform: none; }
